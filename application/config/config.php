@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= '';
+$config['base_url']	= 'sumi_cs';
 
 /*
 |--------------------------------------------------------------------------
@@ -360,3 +360,11 @@ $config['proxy_ips'] = '';
 
 /* End of file config.php */
 /* Location: ./application/config/config.php */
+
+
+
+
+// Para indicarle al HMVC en donde van a ir los módulos
+$config['modules_locations'] = array(
+    APPPATH.'modules_core/' => '../modules_core/',
+);

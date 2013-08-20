@@ -38,8 +38,24 @@
 |
 */
 
-$route['default_controller'] = "welcome";
+$route['default_controller'] = "homepage";
 $route['404_override'] = '';
+
+# HOMEPAGE
+$route['homepage'] = "homepage/index";
+
+
+# MODELOS
+// $route['models'] = 'all_models';
+// $route['models/(:any)'] = 'all_models/$1';
+// $route['models/(:any)/(:any)'] = 'all_models/$1/$2';
+
+
+
+# FRONTEND -- TRABAJOS DESTACADOS
+// $route['destacados'] = 'front_destacados';
+// $route['destacados/(:any)'] = 'front_destacados/$1';
+// $route['destacados/(:any)/(:any)'] = 'front_destacados/$1/$2';
 
 
 /* End of file routes.php */
