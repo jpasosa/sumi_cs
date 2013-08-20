@@ -14,10 +14,12 @@ class Homepage extends MX_Controller
 
 	public function index()
 	{
-		echo 'HOMEPAGE';
 
-
-		die();
+		$data = '';
+		$this->load->view('templates/heads', $data);
+		$this->load->view('templates/header', $data);
+		$this->load->view('templates/content', $data);
+		$this->load->view('templates/footer', $data);
 	}
 
 
