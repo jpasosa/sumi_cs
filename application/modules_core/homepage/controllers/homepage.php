@@ -8,14 +8,18 @@ class Homepage extends MX_Controller
 	{
 		parent::__construct();
 		//$this->output->enable_profiler(TRUE);
-
+		$this->section = $this->router->fetch_class() . '.' . $this->router->fetch_method();
 
 	}
 
 	public function index()
 	{
 
-		$data = '';
+
+
+
+		$data['section'] = $this->section;
+
 		$this->load->view('templates/heads', $data);
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/content', $data);
