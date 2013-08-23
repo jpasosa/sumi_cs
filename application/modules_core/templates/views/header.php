@@ -14,9 +14,9 @@
                     <div class="bottom_menu">
                         <div class="logo">
                             <a href="{{ path('_homepage') }}">
-                            <img class="logo_image" src=" <?php echo ASSETS . 'frontend/images/icono-stock.png'; ?>" alt="stock" title="Stock" width="72" height="50" />
+                                <img class="logo_image" src=" <?php echo ASSETS . 'frontend/images/icono-stock.png'; ?>" alt="stock" title="Stock" width="72" height="50" />
                             </a>
-                            SUMINISTROS
+                            <!-- SUMINISTROS -->
                         </div>
                         <ul class="menu_principal">
                             <li> <a href="{{ path('article_new') }}">Alta de Productos </a></li>

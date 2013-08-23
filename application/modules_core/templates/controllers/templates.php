@@ -19,6 +19,14 @@ class Templates extends MX_Controller
 
 	}
 
+	public function heads()
+	{
+		die('pepe');
+		$this->load->view('templates/heads', $data);
+
+
+	}
+
 
 
 

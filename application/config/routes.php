@@ -44,6 +44,11 @@ $route['404_override'] = '';
 # HOMEPAGE
 $route['homepage'] = "homepage/index";
 
+# TEMPLATES
+$route['templates'] = "templates";
+$route['templates/(:any)'] = 'templates/$1';
+$route['templates/(:any)/(:any)'] = 'templates/$1/$2';
+
 
 # MODELOS
 // $route['models'] = 'all_models';
