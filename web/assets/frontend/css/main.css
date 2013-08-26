@@ -101,7 +101,7 @@ body * {
 }
 
 .out-container .header .top {
-  min-height: 90px;
+  min-height: 70px;
 }
 
 .out-container .header .top .in {
@@ -156,14 +156,14 @@ body * {
   clear: both;
   width: 980px;
   min-height: 47px;
-  padding-top: 14px;
+  /*padding-top: 14px;*/
 }
 
 .out-container .header .top .in .bottom_menu .logo {
   float: left;
-  height: 30px;
-  margin-top: -29px;
-  width: 160px;
+  /*height: 30px;*/
+  margin: 0;
+  /*width: 160px;*/
 }
 .out-container .header .top .in .bottom_menu .logo a {
   color: #414B55;
@@ -171,6 +171,7 @@ body * {
 }
 .out-container .header .top .in .bottom_menu .logo a img {
   border: medium none;
+  margin: -15px 0 0 0;
 }
 
 
@@ -308,10 +309,10 @@ body * {
 
 .content .left {
   border-right: 1px dotted #DDDDDD;
-  float: left;
+  /*float: left;*/
   min-height: 330px;
-  padding: 5px 0 0 0;
-  width: 194px;
+  /*padding: 5px 0 0 0;*/
+  width: 100%;
 }
 
 .content .right {
