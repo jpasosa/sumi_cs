@@ -8,26 +8,36 @@ class Action_productos extends CI_Model
 		// $this->load->config('estados');
 	}
 
-	public function validate_add($product)
+	public function validateAdd($product)
 	{
 		$errors = false;
 
-		if(!isset($product['codigo'])) {
+		if($product['codigo'] == '') {
 			$errors['codigo'] = 'El codigo es obligatorio';
 		}
 
-		if(!isset($product['descripcion'])) {
-			$errors['descripcion'] = 'El descripcion es obligatorio';
+		if($product['descripcion'] == '') {
+			$errors['descripcion'] = 'La descripcion es obligatoria';
 		}
 
-		if(!isset($product['id_categorias'])) {
+		if($product['id_categorias'] == '') {
 			$errors['id_categorias'] = 'Debe indicar la categoría';
 		}
 
 		return $errors;
 	}
 
+	public function insert($product)
+	{
 
+		$insert_prod = $this->db->insert('productos', $product);
+		if($insert_prod) {
+			return true;
+		}else {
+			return false;
+		}
+
+	}
 
 
 }
