@@ -13,7 +13,7 @@
                     </ul>
                     <div class="bottom_menu">
                         <div class="logo">
-                            <a href="{{ path('_homepage') }}">
+                            <a href="<?php echo site_url('homepage');?>">
                                 <img class="logo_image" src=" <?php echo ASSETS . 'frontend/images/icono-stock.png'; ?>" alt="stock" title="Stock" width="72" height="50" />
                             </a>
                             <!-- SUMINISTROS -->

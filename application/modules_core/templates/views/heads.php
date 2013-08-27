@@ -16,6 +16,10 @@
 	<!-- ESTILO PRINCIPAL -->
 	<link href="<?php echo ASSETS . 'frontend/css/main.css'; ?>" type="text/css" rel="stylesheet" />
 
+	<!-- ESTILO PRODUCTOS -->
+	<?php if ( $section == 'productos.add' ): ?>
+		<link href="<?php echo ASSETS . 'frontend/css/productos.css'; ?>" type="text/css" rel="stylesheet" />
+	<?php endif ?>
 
 	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!--[if lt IE 9]>

@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Get_productos extends CI_Model
+class Action_categorias extends CI_Model
 {
 	public function __construct()
 	{

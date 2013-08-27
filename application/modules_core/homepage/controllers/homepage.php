@@ -15,11 +15,10 @@ class Homepage extends MX_Controller
 	public function index()
 	{
 
+		$data['section'] 			= $this->section;
+		$data['id_menu_left'] 	= '';
 
-
-
-		$data['section'] = $this->section;
-
+		// VISTAS
 		$this->load->view('templates/heads', $data);
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/content', $data);

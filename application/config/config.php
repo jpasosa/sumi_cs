@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'sumi_cs';
+$config['base_url']	= 'http://sumi_cs';
 
 /*
 |--------------------------------------------------------------------------
@@ -26,7 +26,7 @@ $config['base_url']	= 'sumi_cs';
 | variable so that it is blank.
 |
 */
-$config['index_page'] = 'index.php';
+$config['index_page'] = '';
 
 /*
 |--------------------------------------------------------------------------

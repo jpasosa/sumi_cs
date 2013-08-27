@@ -49,6 +49,11 @@ $route['templates'] = "templates";
 $route['templates/(:any)'] = 'templates/$1';
 $route['templates/(:any)/(:any)'] = 'templates/$1/$2';
 
+# TEMPLATES
+$route['productos'] = "productos";
+$route['productos/(:any)'] = 'productos/$1';
+$route['productos/(:any)/(:any)'] = 'productos/$1/$2';
+
 
 # MODELOS
 // $route['models'] = 'all_models';
