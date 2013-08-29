@@ -16,7 +16,13 @@
 
 <div class="inner-content new_article">
 	<div class="box_new_article">
-		<div class="title"> ALTA DE PRODUCTO </div>
+		<div class="title">
+			<?php if ($section == 'productos.editar'): ?>
+				EDICIÓN DEL PRODUCTO
+			<?php else: ?>
+				ALTA DEL PRODUCTO
+			<?php endif; ?>
+		</div>
 		<form action="<?php echo $form_action; ?>" method="post" enctype="multipart/form-data" >
 			<div class="image_top">
 				<img src="<?php echo ASSETS . 'frontend/images/alta_productos.png'; ?>" width="198" height="114" alt="alta" />

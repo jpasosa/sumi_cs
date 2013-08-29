@@ -22,6 +22,8 @@ class Get_categorias extends CI_Model
 
 
 
+
+
 }
 
 ?>

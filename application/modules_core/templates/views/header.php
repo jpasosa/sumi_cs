@@ -19,7 +19,7 @@
                             <!-- SUMINISTROS -->
                         </div>
                         <ul class="menu_principal">
-                            <li> <a href="{{ path('article_new') }}">Alta de Productos </a></li>
+                            <li> <a href="<?php echo site_url('productos/add');?>">Alta de Productos </a></li>
                             <li> <a href="#">Stock Actual </a></li>
                             <li> <a href="#">Entrada de Stock </a></li>
                             <li> <a href="#">Salida de Stock </a></li>

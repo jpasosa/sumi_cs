@@ -17,7 +17,8 @@
 	<link href="<?php echo ASSETS . 'frontend/css/main.css'; ?>" type="text/css" rel="stylesheet" />
 
 	<!-- ESTILO PRODUCTOS -->
-	<?php if ( $section == 'productos.add' ): ?>
+	<?php if ( $section == 'productos.add' || $section == 'productos.listar'
+				|| $section == 'productos.editar' || $section == 'productos.ver'): ?>
 		<link href="<?php echo ASSETS . 'frontend/css/productos.css'; ?>" type="text/css" rel="stylesheet" />
 	<?php endif ?>
 

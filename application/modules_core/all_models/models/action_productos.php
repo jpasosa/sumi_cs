@@ -39,6 +39,22 @@ class Action_productos extends CI_Model
 
 	}
 
+	public function update($product)
+	{
+
+		$this->db->where('id_productos', $product['id_productos']);
+		$this->db->update('productos', $product);
+		$update = $this->db->affected_rows();
+		if($update == 1) {
+			return true;
+		}else {
+			return false;
+		}
+
+
+	}
+
+
 
 }
 
