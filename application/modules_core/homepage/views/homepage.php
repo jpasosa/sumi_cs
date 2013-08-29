@@ -15,7 +15,7 @@
 		</a>
 	</div>
 	<div class="box">
-		<a href="#">
+		<a href="<?php echo site_url('entrada_stock/nueva_entrada');?>">
 			<img src="<?php echo ASSETS . 'frontend/images/ingreso_stock.png'; ?>" width="64" height="52" alt="ingreso" />
 			<span class="h3">Entrada de Stock</span>
 			<span class="p">Ingresar productos al Stock.</span>

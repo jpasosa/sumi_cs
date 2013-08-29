@@ -10,7 +10,8 @@
 	</a>
 <?php endif ?>
 
-<?php if ($section == 'productos.add' || $section == 'productos.ver' || $section == 'productos.editar'): ?>
+<?php if ($section == 'productos.add' || $section == 'productos.ver' || $section == 'productos.editar'
+			|| $section == 'entrada_stock.nueva_entrada'): ?>
 	<a href="<?php echo site_url('productos/listar');?>">
 		<img class="list" src="<?php echo ASSETS . 'frontend/images/productos/list.png'; ?>" alt="listar" title="Listar Productos" width="40" height="40" />
 	</a>

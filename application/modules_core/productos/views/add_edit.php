@@ -33,7 +33,7 @@
 				<!-- DESCRIPCION -->
 				<div class="descripcion">
 					<label>Descripción:</label>
-					<input type="text" name="descripcion" <?php if($product['descripcion'] != ''): echo $product['descripcion']; endif; ?>>
+					<input type="text" name="descripcion" value="<?php if($product['descripcion'] != ''): echo $product['descripcion']; endif; ?>">
 				</div>
 			</div>
 			<div class="bottom">

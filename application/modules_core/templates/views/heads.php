@@ -22,6 +22,12 @@
 		<link href="<?php echo ASSETS . 'frontend/css/productos.css'; ?>" type="text/css" rel="stylesheet" />
 	<?php endif ?>
 
+	<!-- ESTILO STOCK -->
+	<?php if ( $section == 'entrada_stock.nueva_entrada'): ?>
+		<link href="<?php echo ASSETS . 'frontend/css/productos.css'; ?>" type="text/css" rel="stylesheet" />
+		<!-- TODO: hay que hacer el estilo propio del stock, por ahora uso de los productos -->
+	<?php endif ?>
+
 	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!--[if lt IE 9]>
 		<script src="../../assets/js/html5shiv.js"></script>

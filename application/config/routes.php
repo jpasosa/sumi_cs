@@ -49,10 +49,15 @@ $route['templates'] = "templates";
 $route['templates/(:any)'] = 'templates/$1';
 $route['templates/(:any)/(:any)'] = 'templates/$1/$2';
 
-# TEMPLATES
+# PRODUCTOS
 $route['productos'] = "productos";
 $route['productos/(:any)'] = 'productos/$1';
 $route['productos/(:any)/(:any)'] = 'productos/$1/$2';
+
+# ENTRADA DE STOCK
+$route['entrada_stock'] = "entrada_stock";
+$route['entrada_stock/(:any)'] = 'entrada_stock/$1';
+$route['entrada_stock/(:any)/(:any)'] = 'entrada_stock/$1/$2';
 
 
 # MODELOS

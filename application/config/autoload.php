@@ -113,7 +113,8 @@ $autoload['model'] = array('all_models/action_productos',
 							'all_models/repo_productos',
 							'all_models/action_categorias',
 							'all_models/get_categorias',
-							'all_models/repo_categorias'
+							'all_models/repo_categorias',
+							'all_models/get_tipodocumentos'
 
 							);
 
