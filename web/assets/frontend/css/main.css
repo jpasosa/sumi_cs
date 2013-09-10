@@ -315,19 +315,20 @@ body * {
   width: 100%;
 }
 
-.content .right {
+.content #right {
   float: left;
   padding: 0 30px 0 30px;
-  width: 725px;
+  width: 100%;
+  /*width: 725px;*/
 }
 
-.content .right .boxes {
+.content #right .boxes {
   float: left;
   margin: 30px 0 20px 0;
   width: 725px;
 }
 
-.content .right .boxes .box {
+.content #right .boxes .box {
   background-color: #FFFFFF;
     border-color: #F2F2F2 #F2F2F2 #E2E2E2;
     border-style: solid;
@@ -339,23 +340,23 @@ body * {
     width: 325px;
 }
 
-.content .right .boxes .box:hover {
+.content #right .boxes .box:hover {
   background-color: #F5F5F5;
   cursor: pointer;
 }
 
-.content .right .boxes .box a {
+.content #right .boxes .box a {
   text-decoration: none;
 }
 
-.content .right .boxes .box a img {
+.content #right .boxes .box a img {
   float: left;
   height: 37px;
   margin: 0 10px 60px 0;
   width: 64px;
 }
 
-.content .right .boxes .box a .h3 {
+.content #right .boxes .box a .h3 {
   font-size: 22px;
     font-weight: 300;
     letter-spacing: -1px;
@@ -365,7 +366,7 @@ body * {
     color: #444444;
 }
 
-.content .right .boxes .box a .p {
+.content #right .boxes .box a .p {
     color: #777777;
     display: block;
     font-size: 13px;

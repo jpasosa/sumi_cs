@@ -1,19 +1,20 @@
 
 
-<div class="content">
+<div class="content" id="<?php echo $id_content; ?>">
 
 		<div class="col-md-1">
 			<div class="left" id="<?php echo $id_menu_left; ?>">
 				<?php if ( $section == 'productos.add' || $section == 'productos.listar'
 							|| $section == 'productos.ver' || $section == 'productos.editar'
-							|| $section == 'entrada_stock.nueva_entrada'): ?>
+							|| $section == 'entrada_stock.nueva_entrada'
+							|| $section == 'productos.configuracion'): ?>
 					<?php $this->load->view('productos/menu_izq'); ?>
 				<?php endif; ?>
 			</div>
 		</div>
 
 		<div class="col-md-11">
-			<div class="right">
+			<div id="right">
 				<!-- HOMEPAGE -->
 				<?php if ( $section == 'homepage.index' ): ?>
 					<?php $this->load->view('homepage/homepage'); ?>
@@ -30,6 +31,10 @@
 				<!-- PRODUCTOS :: VER -->
 				<?php if ( $section == 'productos.ver' ): ?>
 					<?php $this->load->view('productos/ver'); ?>
+				<?php endif; ?>
+				<!-- PRODUCTOS :: CONFIGURACION -->
+				<?php if ( $section == 'productos.configuracion'): ?>
+					<?php $this->load->view('productos/configuracion'); ?>
 				<?php endif; ?>
 
 				<!-- ENTRADA DE STOCK :: NUEVA ENTRADA -->

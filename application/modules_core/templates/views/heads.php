@@ -10,7 +10,7 @@
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
 
 <!-- BOOTSTRAP -->
-	<link href="<?php echo ASSETS . 'bootstrap/dist/css/bootstrap.min.css'; ?>" rel="stylesheet" media="screen">
+	<link href="<?php echo ASSETS . 'bootstrap/dist/css/bootstrap.css'; ?>" rel="stylesheet" media="screen">
 
 
 	<!-- ESTILO PRINCIPAL -->
@@ -18,7 +18,7 @@
 
 	<!-- ESTILO PRODUCTOS -->
 	<?php if ( $section == 'productos.add' || $section == 'productos.listar'
-				|| $section == 'productos.editar' || $section == 'productos.ver'): ?>
+				|| $section == 'productos.editar' || $section == 'productos.ver' || $section == 'productos.configuracion'): ?>
 		<link href="<?php echo ASSETS . 'frontend/css/productos.css'; ?>" type="text/css" rel="stylesheet" />
 	<?php endif ?>
 

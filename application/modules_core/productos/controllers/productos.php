@@ -30,7 +30,7 @@ class Productos extends MX_Controller {
 			$data['error_message'] 	= $error_message;
 			$data['title']				= 'Control Stock';
 			$data['form_action'] 	= site_url('productos/add/');;
-
+			$data['id_content']		= 'productos';
 			$data['categorys'] 		= $this->get_categorias->getAll();
 
 			if($this->input->server('REQUEST_METHOD') == 'GET') { // START
@@ -93,7 +93,7 @@ class Productos extends MX_Controller {
 			$data['error_message'] 	= $error_message;
 			$data['title']				= 'Control Stock';
 			$data['form_action'] 	= site_url('productos/add/');;
-
+			$data['id_content']		= 'listar_productos';
 			// $data['categorys'] 		= $this->get_categorias->getAll();
 
 
@@ -128,10 +128,11 @@ class Productos extends MX_Controller {
 
 			$error_message		= array();
 			$data['error_message'] 	= $error_message;
-			$data['title']				= 'Control Stock';
-
+			$data['title']				= 'Control Stock :: Ver Producto';
+			$data['id_content']		= 'productos';
 			$product 				= $this->get_productos->getById($id_product);
 			$data['product']			= $product;
+
 
 			// VISTAS
 			$this->load->view('templates/heads', $data);
@@ -157,7 +158,7 @@ class Productos extends MX_Controller {
 			$error_message		= array();
 			$data['title']				= 'Control Stock';
 			$data['form_action'] 	= site_url('productos/editar/' . $id_product);;
-
+			$data['id_content']		= 'productos';
 			$data['categorys'] 		= $this->get_categorias->getAll();
 
 			if($this->input->server('REQUEST_METHOD') == 'GET')
@@ -195,6 +196,31 @@ class Productos extends MX_Controller {
 			$data['product']				= $product;
 			// MENSAJES DE VALIDACIONES
 			$data['error_message']		= $error_message;
+
+			// VISTAS
+			$this->load->view('templates/heads', $data);
+			$this->load->view('templates/header', $data);
+			$this->load->view('templates/content', $data);
+			// INCLUYO VISTA DE PRODUCTOS EN EL CONTENT
+			$this->load->view('templates/footer', $data);
+
+		} catch (Exception $e) {
+			throw new Exception($e->getMessage());
+		}
+
+	}
+
+	public function configuracion()
+	{
+		try {
+			$data 					= array();
+			$data['section'] 			= $this->section; // en donde estamos
+			$data['id_menu_left'] 	= 'menu_productos';
+
+			$error_message		= array();
+			$data['error_message'] 	= $error_message;
+			$data['title']				= 'Control Stock';
+			$data['id_content']		= 'productos_configuracion';
 
 			// VISTAS
 			$this->load->view('templates/heads', $data);

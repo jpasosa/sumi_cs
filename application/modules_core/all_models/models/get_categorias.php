@@ -20,6 +20,18 @@ class Get_categorias extends CI_Model
 		}
 	}
 
+	public function getByCodigoAbrev($abrev)
+	{
+		try {
+			$sql = "SELECT * FROM categorias C WHERE codigo_abrev = '$abrev' ";
+			$query = $this->db->query($sql);
+			return $query->result_array();
+
+		} catch (Exception $e) {
+			return array();
+		}
+	}
+
 
 
 
