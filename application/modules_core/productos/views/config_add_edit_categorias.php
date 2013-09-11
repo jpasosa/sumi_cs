@@ -26,6 +26,7 @@
 				</div>
 			<?php endif; ?>
 
+
 			<!-- CODIGO DEL ARTICULO-->
 			<div class="codigo_abrev">
 				<label>Código Abrevación</label>

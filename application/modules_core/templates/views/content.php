@@ -9,7 +9,8 @@
 							|| $section == 'entrada_stock.nueva_entrada'
 							|| $section == 'productos.configuracion'
 							|| $section == 'productos.confListarCategorias'
-							|| $section == 'productos.add_categoria'): ?>
+							|| $section == 'productos.add_categoria'
+							|| $section == 'productos.editar_categoria'): ?>
 					<?php $this->load->view('productos/menu_izq'); ?>
 				<?php endif; ?>
 			</div>
@@ -44,6 +45,10 @@
 				<?php endif; ?>
 				<!-- PRODUCTOS :: CONFIGURACION :: AGREGAR CATEGORIA -->
 				<?php if ( $section == 'productos.add_categoria'): ?>
+					<?php $this->load->view('productos/config_add_edit_categorias'); ?>
+				<?php endif; ?>
+				<!-- PRODUCTOS :: CONFIGURACION :: EDITAR CATEGORIA -->
+				<?php if ( $section == 'productos.editar_categoria'): ?>
 					<?php $this->load->view('productos/config_add_edit_categorias'); ?>
 				<?php endif; ?>
 

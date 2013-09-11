@@ -6,6 +6,21 @@
 	</div>
 
 	<div class="col-md-6">
+		<!-- CATEGORIA CREADO CORRECTAMENTE -->
+		<?php if ($this->session->flashdata('flash_notice')): ?>
+			<div class="alert alert-success fade in" >
+				<a class="close" data-dismiss="alert" href="#">&times;</a>
+				<?php echo $this->session->flashdata('flash_notice'); ?>
+			</div>
+		<?php endif ?>
+		<!-- CATEGORIA NO PUDO SER EDITADA -->
+		<?php if ($this->session->flashdata('flash_error')): ?>
+			<div class="alert alert-error fade in" >
+				<a class="close" data-dismiss="alert" href="#">&times;</a>
+				<?php echo $this->session->flashdata('flash_error'); ?>
+			</div>
+		<?php endif ?>
+
 		<table class="table  table-condensed">
 			<tr>
 				<th><strong>CODIGO</strong></th>
@@ -21,7 +36,7 @@
 						<?php echo $cat['nombre']; ?>
 					</td>
 					<td  class="actions">
-						<a href="<?php echo site_url('productos/editar/' . $cat['id_categorias']);?>">
+						<a href="<?php echo site_url('productos/editar_categoria/' . $cat['id_categorias']);?>">
 							<img class="edit" src="<?php echo ASSETS . 'frontend/images/icons/edit_30.png'; ?>" alt="editar" title="Editar" width="20" height="20" />
 						</a>
 						<a href="#">

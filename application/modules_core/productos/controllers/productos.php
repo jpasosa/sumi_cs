@@ -325,6 +325,78 @@ class Productos extends MX_Controller {
 	}
 
 
+	public function editar_categoria($id_category)
+	{
+		try {
+
+			$data 					= array();
+			$data['section'] 			= $this->section; // en donde estamos
+			$data['id_menu_left'] 	= 'menu_productos';
+
+			$error_message		= array();
+			$data['title']				= 'Control Stock';
+			$data['form_action'] 	= site_url('productos/editar_categoria/' . $id_category);;
+			$data['id_content']		= 'productos_configuracion';
+			if($this->input->server('REQUEST_METHOD') == 'GET')
+			{ // START
+				$category = $this->get_categorias->getById($id_category);
+				if ($category == false) {
+					// ERROR NO PUDO AGARRAR EL PRODUCTO
+				}
+
+			}
+			else
+			{ // GUARDAR, por post.
+				// CATEGORIAS
+				$category 				= $this->getDataForCategory();
+				$category['id_categorias']	= $id_category;
+
+				$error_message = $this->action_categorias->validateAddUpdated($category);
+
+
+
+
+
+				if(!$error_message)
+				{  	// PASO LA VALIDACIÓN
+					$update_category = $this->action_categorias->update($category);
+
+
+					if($update_category) {
+						$message = 'Categoria editada con éxito';
+						$this->session->set_flashdata('flash_notice', $message);
+						redirect('productos/confListarCategorias');
+					} else {
+						$message = 'La categoría no fue editada.';
+						$this->session->set_flashdata('flash_error', $message);
+						redirect('productos/confListarCategorias');
+					}
+					$category = $this->getDataEmpty();
+				}
+			}
+
+
+			// CATEGORIA
+			$data['categoria']				= $category;
+			// MENSAJES DE VALIDACIONES
+			$data['error_message']		= $error_message;
+
+
+
+			// VISTAS
+			$this->load->view('templates/heads', $data);
+			$this->load->view('templates/header', $data);
+			$this->load->view('templates/content', $data);
+			// INCLUYO VISTA DE PRODUCTOS EN EL CONTENT
+			$this->load->view('templates/footer', $data);
+
+		} catch (Exception $e) {
+			throw new Exception($e->getMessage());
+		}
+
+	}
+
+
 
 
 
