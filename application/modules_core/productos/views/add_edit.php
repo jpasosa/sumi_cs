@@ -1,10 +1,5 @@
 <?php if (isset($message_error)): ?>
-
-	<?php endif; ?>
-
-
-
-
+<?php endif; ?>
 
 <div class="col-md-2">
 </div>
@@ -27,8 +22,7 @@
 			<a class="close" data-dismiss="alert" href="#">&times;</a>
 			<?php echo $message_notice; ?>
 		</div>
-
-	<?php endif ?>
+	<?php endif; ?>
 
 
 

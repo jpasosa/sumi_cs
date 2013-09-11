@@ -18,7 +18,9 @@
 
 	<!-- ESTILO PRODUCTOS -->
 	<?php if ( $section == 'productos.add' || $section == 'productos.listar'
-				|| $section == 'productos.editar' || $section == 'productos.ver' || $section == 'productos.configuracion'): ?>
+				|| $section == 'productos.editar' || $section == 'productos.ver' || $section == 'productos.configuracion'
+				|| $section == 'productos.confListarCategorias'
+				|| $section == 'productos.add_categoria'): ?>
 		<link href="<?php echo ASSETS . 'frontend/css/productos.css'; ?>" type="text/css" rel="stylesheet" />
 	<?php endif ?>
 

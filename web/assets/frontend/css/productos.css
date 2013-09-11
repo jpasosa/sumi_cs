@@ -212,6 +212,36 @@
     background-color: #fdf4f4;
 }
 
+#listar_productos table td {
+    font-size: 12px;
+}
+
+
+
+
+/**/
+/**/
+/*CONFIGURAION*/
+/**/
+/**/
+
+#productos_configuracion #right ul li.dropdown a.menu {
+    padding: 8px 15px 8px 15px;
+    color: #D82133;
+}
+
+#productos_configuracion #right .title {
+    width: 100%;
+    font-size: 22px;
+    margin: 10px 0 10px 0;
+    font-weight: bold;
+    color: #333333;
+}
+
+#productos_configuracion #right .content_menu {
+    width: 100%;
+    margin: 10px 0 30px 0;
+}
 
 
 

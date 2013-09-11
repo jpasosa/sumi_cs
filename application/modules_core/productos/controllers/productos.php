@@ -235,6 +235,94 @@ class Productos extends MX_Controller {
 
 	}
 
+	// CONFIGURACION :: LISTAR CATEGORIAS
+	public function confListarCategorias()
+	{
+		try {
+			$data 					= array();
+			$data['section'] 			= $this->section; // en donde estamos
+			$data['id_menu_left'] 	= 'menu_productos';
+
+			$error_message		= array();
+			$data['error_message'] 	= $error_message;
+			$data['title']				= 'Control Stock';
+			$data['id_content']		= 'productos_configuracion';
+			$data['categorias']		= $this->get_categorias->getAll();
+
+			// VISTAS
+			$this->load->view('templates/heads', $data);
+			$this->load->view('templates/header', $data);
+			$this->load->view('templates/content', $data);
+			// INCLUYO VISTA DE PRODUCTOS EN EL CONTENT
+			$this->load->view('templates/footer', $data);
+
+		} catch (Exception $e) {
+			throw new Exception($e->getMessage());
+		}
+
+	}
+
+
+	// AGREGAR UNA CATEGORIA
+	public function add_categoria() {
+		try {
+
+			$data 					= array();
+			$data['section'] 			= $this->section; // en donde estamos
+			// $data['id_menu_left'] 	= 'menu_productos';
+
+			$error_message		= array();
+			$data['error_message'] 	= $error_message;
+			$data['title']				= 'Control Stock';
+			$data['form_action'] 	= site_url('productos/add_categoria/');;
+			$data['id_content']		= 'productos_configuracion';
+			$data['id_menu_left'] 	= 'menu_productos';
+			// $data['categorys'] 		= $this->get_categorias->getAll();
+
+			if($this->input->server('REQUEST_METHOD') == 'GET') { // START
+				$categoria = $this->getDataEmptyForCategory();
+
+			}else{ // GUARDAR, por post.
+				$categoria = $this->getDataForCategory();
+
+				$error_message = $this->action_categorias->validateAdd($categoria);
+
+
+
+
+
+				if(!$error_message)
+				{  	// PASO LA VALIDACIÓN
+					$insert_categoria = $this->action_categorias->insert($categoria);
+					if($insert_categoria) {
+						$data['message_notice'] = 'Categoria insertada con éxito';
+					} else {
+						$data['message_error'] = 'No pudo ser insertada la categoría en la Base de Datos';
+					}
+					$categoria = $this->getDataEmptyForCategory();
+				}
+			}
+
+
+			// MENSAJES DE VALIDACIONES
+			$data['error_message']		= $error_message;
+			$data['categoria']			= $categoria;
+
+			// VISTAS
+			$this->load->view('templates/heads', $data);
+			$this->load->view('templates/header', $data);
+			$this->load->view('templates/content', $data);
+			// INCLUYO VISTA DE PRODUCTOS EN EL CONTENT
+			$this->load->view('templates/footer', $data);
+
+
+
+
+
+		} catch (Exception $e) {
+			throw new Exception($e->getMessage());
+		}
+	}
 
 
 
@@ -263,6 +351,18 @@ class Productos extends MX_Controller {
 		$product['id_categorias'] 	= $this->get_categorias->getAll();
 
 		return $product;
+	}
+
+	protected function getDataEmptyForCategory()
+	{
+		$category = array();
+
+		$category['id_categorias'] 	= 0;
+		$category['nombre']			= '';
+		$category['codigo_abrev'] 	= '';
+		$category['activo'] 			= 1;
+
+		return $category;
 	}
 
 
@@ -303,6 +403,28 @@ class Productos extends MX_Controller {
 		}
 
 		return $product;
+	}
+
+	protected function getDataForCategory()
+	{
+		$category = array();
+
+
+		if($this->input->get_post('nombre')) {
+			$category['nombre'] = trim($this->input->get_post('nombre'));
+		} else {
+			$category['nombre'] = '';
+		}
+
+		if($this->input->get_post('codigo_abrev')) {
+			$category['codigo_abrev'] = trim($this->input->get_post('codigo_abrev'));
+		} else {
+			$category['codigo_abrev'] = '';
+		}
+
+		$category['activo'] = 1;
+
+		return $category;
 	}
 
 	// protected function getDataEditing()
