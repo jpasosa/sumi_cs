@@ -15,6 +15,15 @@
         <?php echo $message_notice; ?>
 <?php endif ?>
 
+<div class="col-md-3">
+</div>
+
+<div class="col-md-6">
+	<div class="title">LISTADO DE PRODUCTOS</div>
+</div>
+
+<div class="col-md-3">
+</div>
 
 
 
@@ -22,11 +31,6 @@
 <div class=".col-md-1"> </div>
 
 <div class=".col-md-10">
-
-	<div class="alert alert-error fade in">
-		<a class="close" data-dismiss="alert">×</a>
-		<strong>Error!</strong>This is a fatal error.
-	</div>
 
 	<?php if ($this->session->flashdata('flash_notice')): ?> <!-- TRABAJO CREADO CORRECTAMENTE -->
 		<div class="alert alert-success fade in" >

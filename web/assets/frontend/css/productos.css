@@ -203,8 +203,9 @@
 /**/
 /**/
 
-.inner-content.list_article {
-
+#listar_productos .inner-content.list_article {
+    float: left;
+    margin:20px 0 0 0;
 }
 
 
@@ -212,9 +213,19 @@
     background-color: #fdf4f4;
 }
 
+#listar_productos table tr th {
+    background-color: #F5F5F5;
+}
+
+#listar_productos table tr th:hover {
+    background-color: #F5F5F5;
+}
+
 #listar_productos table td {
     font-size: 12px;
 }
+
+
 
 
 
@@ -230,7 +241,8 @@
     color: #D82133;
 }
 
-#productos_configuracion #right .title {
+#productos_configuracion #right .title,
+#listar_productos #right .title {
     width: 100%;
     font-size: 22px;
     margin: 10px 0 10px 0;
