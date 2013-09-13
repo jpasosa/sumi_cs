@@ -37,6 +37,20 @@ define('FOPEN_WRITE_CREATE_STRICT',				'xb');
 define('FOPEN_READ_WRITE_CREATE_STRICT',		'x+b');
 
 
+if($_SERVER['REMOTE_ADDR'] == '127.0.0.1') { // LOCAL
+	$ruta = '/';
+	define('RUTA', '/');
+}else { // DEMO
+	$ruta = '/textosdigitales/';
+	define('RUTA', '/textosdigitales/');
+}
+
+if($_SERVER['REMOTE_ADDR'] == '127.0.0.1') { // LOCAL
+	define('RAIZ', 'http://sumi_cs');
+}else { // DEMO
+	define('RAIZ', 'http://testing.zerodigital.com.ar');
+}
+
 
 
 define('ASSETS',	 '/web/assets/');

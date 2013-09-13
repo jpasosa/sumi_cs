@@ -88,6 +88,23 @@ class Action_categorias extends CI_Model
 
 	}
 
+	public function erase($id_category)
+	{
+		$products_with_category = $this->get_productos->getByCategory($id_category);
+
+		if(!$products_with_category)
+		{
+			$erase = $this->db->delete('categorias', array('id_categorias' => $id_category));
+			if($erase) {
+				return true;
+			}
+		}
+
+		return false;
+
+
+	}
+
 }
 
 ?>

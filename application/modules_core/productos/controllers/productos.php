@@ -161,6 +161,9 @@ class Productos extends MX_Controller {
 			$data['id_content']		= 'productos';
 			$data['categorys'] 		= $this->get_categorias->getAll();
 
+
+
+
 			if($this->input->server('REQUEST_METHOD') == 'GET')
 			{ // START
 				$product = $this->get_productos->getById($id_product);

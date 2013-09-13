@@ -31,6 +31,8 @@
 		<!-- TODO: hay que hacer el estilo propio del stock, por ahora uso de los productos -->
 	<?php endif ?>
 
+
+
 	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!--[if lt IE 9]>
 		<script src="../../assets/js/html5shiv.js"></script>
@@ -41,6 +43,16 @@
 	<script src="<?php echo ASSETS . 'frontend/js/jquery-1.10.2.min.js'; ?>"></script>
 	<!-- BOOTSTRAP -->
 	<script src="<?php echo ASSETS . 'bootstrap/dist/js/bootstrap.min.js'; ?>"></script>
+
+	<script type="text/javascript">
+		// ahora se puede usar RUTA desde los .js, cambia si es LOCAL o DEMO
+		var RUTA = "<?php echo RUTA; ?>";
+	</script>
+
+	<!-- JS ELIMINAR CATEGORIAS -->
+	<?php if ( $section == 'productos.confListarCategorias'): ?>
+		<script src="<?php echo ASSETS . 'frontend/js/del_category.js'; ?>"></script>
+	<?php endif ?>
 
 	<!-- ICO -->
 	<link rel="icon" href="<?php echo ASSETS . 'frontend/images/favicon.ico'; ?>  " type="image/vnd.microsoft.icon" />

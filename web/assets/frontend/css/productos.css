@@ -210,7 +210,7 @@
 
 
 #listar_productos table tr:hover {
-    background-color: #fdf4f4;
+    background-color: #ef9e9e;
 }
 
 #listar_productos table tr th {
@@ -223,6 +223,10 @@
 
 #listar_productos table td {
     font-size: 12px;
+}
+
+#listar_productos table tr td.actions a {
+    margin: 0 6px 0 6px;
 }
 
 

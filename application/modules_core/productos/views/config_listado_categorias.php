@@ -40,7 +40,7 @@
 							<img class="edit" src="<?php echo ASSETS . 'frontend/images/icons/edit_30.png'; ?>" alt="editar" title="Editar" width="20" height="20" />
 						</a>
 						<a href="#">
-							<img class="del del_producto" id="<?php echo $cat['id_categorias']; ?>" src="<?php echo ASSETS . 'frontend/images/icons/del_30.png'; ?>" alt="eliminar" title="Borrar" width="20" height="20" />
+							<img class="del del_category" id="<?php echo $cat['id_categorias']; ?>" src="<?php echo ASSETS . 'frontend/images/icons/del_30.png'; ?>" alt="eliminar" title="Borrar" width="20" height="20" />
 						</a>
 					</td>
 				</tr>

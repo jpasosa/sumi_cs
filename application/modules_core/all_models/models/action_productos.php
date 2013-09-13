@@ -50,7 +50,7 @@ class Action_productos extends CI_Model
 
 	public function update($product)
 	{
-
+		$product['codigo'] = $this->putWellCodigo($product['codigo']);
 		$this->db->where('id_productos', $product['id_productos']);
 		$this->db->update('productos', $product);
 		$update = $this->db->affected_rows();
@@ -107,6 +107,21 @@ class Action_productos extends CI_Model
 			$numeros = '0' . $numeros;
 		}
 		$code = strtoupper($code_explode[0]) . ' - ' . $numeros;
+		return $code;
+	}
+
+	// SACA EL GUION DEL MEDIO DEL PRODUCTO, PARA QUE PODAMOS EDITARLO
+	public function removeCodeGuion($code) {
+		$code = trim($code);
+		$code_explode = explode("-", $code);
+		if(isset($code_explode[0]) && isset($code_explode[1]))
+		{
+			$cod_abrev		= trim($code_explode[0]);
+			$numeros 		= trim($code_explode[1]);
+			$code 			= $cod_abrev . ' ' . $numeros;
+		}
+
+
 		return $code;
 	}
 

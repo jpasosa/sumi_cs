@@ -32,11 +32,34 @@ class Get_productos extends CI_Model
 			$query = $this->db->query($sql);
 
 			$product = $query->result_array();
-			if(isset($product[0])) {
-				return $product[0];
+
+			if (isset($product[0])) {
+				$product 			= $product[0];
+				$product['codigo'] 	= $this->action_productos->removeCodeGuion($product['codigo']);
 			} else {
-				return false;
+				$product = false;
 			}
+
+			return $product;
+
+		} catch (Exception $e) {
+			return array();
+		}
+	}
+
+	public function getByCategory($id_category)
+	{
+		try {
+			$sql 		= "SELECT * FROM productos P
+							WHERE P.id_categorias = $id_category";
+			$query 		= $this->db->query($sql);
+			$products 	= $query->result_array();
+
+			if (!isset($products[0])) {
+				$products = false;
+			}
+
+			return $products;
 
 		} catch (Exception $e) {
 			return array();
