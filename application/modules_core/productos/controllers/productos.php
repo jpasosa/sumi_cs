@@ -280,6 +280,7 @@ class Productos extends MX_Controller {
 			$data['form_action'] 	= site_url('productos/add_categoria/');;
 			$data['id_content']		= 'productos_configuracion';
 			$data['id_menu_left'] 	= 'menu_productos';
+			$data['box_title']		= 'ALTA DE LA CATEGORÍA';
 			// $data['categorys'] 		= $this->get_categorias->getAll();
 
 			if($this->input->server('REQUEST_METHOD') == 'GET') { // START
@@ -340,6 +341,7 @@ class Productos extends MX_Controller {
 			$data['title']				= 'Control Stock';
 			$data['form_action'] 	= site_url('productos/editar_categoria/' . $id_category);;
 			$data['id_content']		= 'productos_configuracion';
+			$data['box_title']		= 'EDICIÓN DE LA CATEGORÍA';
 			if($this->input->server('REQUEST_METHOD') == 'GET')
 			{ // START
 				$category = $this->get_categorias->getById($id_category);

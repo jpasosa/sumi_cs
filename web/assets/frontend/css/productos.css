@@ -35,13 +35,13 @@
 }
 
 .alert-error.add_edit_product {
-    margin: 20px 0 0 0;
+    margin: 10px 0 10px 0;
     height: 30px;
     padding: 4px 0 0 30px;
 }
 
 .alert-success.add_edit_product {
-    margin: 20px 0 0 0;
+    margin: 10px 0 10px 0;
     height: 30px;
     padding: 4px 0 0 30px;
 }
@@ -261,6 +261,55 @@
 }
 
 
+
+/*ALTA EDICION DE UNA CATEGORIA*/
+#productos_configuracion #right .add_edit_category {
+    width: 420px;
+    /*margin: 10px 0 30px 0;*/
+    background-color: #F5F5F5;
+    height: 180px;
+    border: 1px solid #DDDDDD;
+}
+
+#productos_configuracion #right .add_edit_category .title {
+    width: 100%;
+    background-color: #DDDDDD;
+    /*height: 40px;*/
+    text-align: center;
+    margin: 0;
+}
+
+#productos_configuracion #right .add_edit_category .codigo_abrev {
+    margin: 10px 0 10px 20px;
+}
+#productos_configuracion #right .add_edit_category .codigo_abrev label {
+    font-size: 14px;
+    text-transform: uppercase;
+}
+#productos_configuracion #right .add_edit_category .codigo_abrev input {
+    margin: 0 0 0 87px;
+    border: 1px solid #8C8A8A;
+    width: 100px;
+
+}
+
+#productos_configuracion #right .add_edit_category .nombre {
+    margin: 10px 0 10px 20px;
+}
+#productos_configuracion #right .add_edit_category .nombre label {
+    font-size: 14px;
+    text-transform: uppercase;
+}
+#productos_configuracion #right .add_edit_category .nombre input {
+    margin: 10px 0 10px 20px;
+    border: 1px solid #8C8A8A;
+    width: 250px;
+}
+/*boton agregar*/
+#productos_configuracion #right .add_edit_category .agregar {
+    margin: 0 60px 0 0;
+    float: right;
+}
 
 
 

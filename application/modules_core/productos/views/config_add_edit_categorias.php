@@ -6,30 +6,29 @@
 	</div>
 
 	<div class="col-md-6">
-		<form action="<?php echo $form_action; ?>" method="post" enctype="multipart/form-data" >
-			<?php if (!$error_message): ?>
+		<?php if (!$error_message): ?>
 
-			<?php else: ?>
-				<!-- ERRORES DE VALIDACIÓN -->
-				<?php foreach ($error_message as $em): ?>
-						<div class="alert alert-error fade in add_edit_product">
-							<a class="close" data-dismiss="alert">×</a>
-							<strong><?php echo $em; ?></strong>
-						</div>
-				<?php endforeach ?>
-			<?php endif ?>
-			<!-- CATEGORIA INSERTADA CON EXITO -->
-			<?php if (isset($message_notice)): ?>
-				<div class="alert alert-success fade in add_edit_product" >
-					<a class="close" data-dismiss="alert" href="#">&times;</a>
-					<?php echo $message_notice; ?>
-				</div>
-			<?php endif; ?>
-
-
+		<?php else: ?>
+			<!-- ERRORES DE VALIDACIÓN -->
+			<?php foreach ($error_message as $em): ?>
+					<div class="alert alert-error fade in add_edit_product" style="width: 420px;">
+						<a class="close" data-dismiss="alert">×</a>
+						<strong><?php echo $em; ?></strong>
+					</div>
+			<?php endforeach ?>
+		<?php endif ?>
+		<!-- CATEGORIA INSERTADA CON EXITO -->
+		<?php if (isset($message_notice)): ?>
+			<div class="alert alert-success fade in add_edit_product" style="width: 420px;" >
+				<a class="close" data-dismiss="alert" href="#">&times;</a>
+				<?php echo $message_notice; ?>
+			</div>
+		<?php endif; ?>
+		<form class="add_edit_category" action="<?php echo $form_action; ?>" method="post" enctype="multipart/form-data" >
+			<div class="title"><?php echo $box_title; ?></div>
 			<!-- CODIGO DEL ARTICULO-->
 			<div class="codigo_abrev">
-				<label>Código Abrevación</label>
+				<label>Código Abrevación:</label>
 				<input type="text" name="codigo_abrev" value="<?php if($categoria['codigo_abrev'] != ''): echo $categoria['codigo_abrev']; endif; ?>">
 			</div>
 			<!-- DESCRIPCION -->
