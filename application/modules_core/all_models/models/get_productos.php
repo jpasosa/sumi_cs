@@ -66,6 +66,25 @@ class Get_productos extends CI_Model
 		}
 	}
 
+	public function getByCodigo($code)
+	{
+		try {
+			$sql 		= "SELECT * FROM productos P
+							WHERE P.codigo = '$code' ";
+			$query 		= $this->db->query($sql);
+			$products 	= $query->result_array();
+
+			if (!isset($products[0])) {
+				$products = false;
+			}
+
+			return $products;
+
+		} catch (Exception $e) {
+			return array();
+		}
+	}
+
 }
 
 ?>

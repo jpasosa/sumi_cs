@@ -76,13 +76,40 @@ class Action_productos extends CI_Model
 			$ret['validado'] 	= false;
 			$ret['message'] = 'Código incorrecto. Deben ser dos términos separados por un espacio';
 			return $ret;
+		} else {
+			$cod_abrev = strtoupper($code_explode[0]);
+			$numeros 	= $code_explode[1];
 		}
 
 		// CONTROLA QUE EXISTA EL CODIGO DE ABREVIACION
-		$exist_abrev = $this->get_categorias->getByCodigoAbrev(strtoupper($code_explode[0]));
-		if(count($exist_abrev) == 0) {
+		$exist_abrev = $this->get_categorias->getByCodigoAbrev($cod_abrev);
+		if(!$exist_abrev) {
 			$ret['validado'] 	= false;
 			$ret['message'] 	= 'El código de la categoria cargado no existe.';
+			return $ret;
+		}
+
+		// CONTROLA QUE LOS NUMEROS NO SE PASEN DE 5CARACTERES Y QUE SEAN SOLO NUMEROS
+		$patron = "/^[[:digit:]]+$/";
+		if (preg_match($patron, $numeros)) {
+			$cant_numeros = strlen($numeros);
+			if($cant_numeros > 5) {
+				$ret['validado'] 		= false;
+				$ret['message'] 	= 'El código está mal escrito. Hay más de 5 dígitos en los números.';
+				return $ret;
+			}
+		} else {
+			$ret['validado'] 		= false;
+			$ret['message'] 	= 'Código incorrecto. No van letras en numeración.';
+			return $ret;
+		}
+
+		// CONTROLA QUE NO EXISTA EL CÓDIGO
+		$code_for_insert = $this->putWellCodigo($code);
+		$exist_code = $this->is_productos->existCodigo($code_for_insert);
+		if($exist_code) {
+			$ret['validado'] 		= false;
+			$ret['message'] 	= 'Código ya existente.';
 			return $ret;
 		}
 
