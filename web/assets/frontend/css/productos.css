@@ -228,6 +228,15 @@
 
 #listar_productos table tr td.actions a {
     margin: 0 6px 0 6px;
+    list-style-type: none;
+    text-decoration: none;
+}
+
+#listar_productos table tr td.actions a:hover {
+    list-style-type: none;
+    text-decoration: none;
+    opacity:0.2;
+    filter:alpha(opacity=20);
 }
 
 
@@ -312,6 +321,19 @@
 }
 
 
+
+/*LISTA DE CATEGORIAS*/
+
+#productos_configuracion #right .lista_categorias tr td.actions a {
+    padding: 0 10px 0 10px;
+}
+
+#productos_configuracion #right .lista_categorias tr td.actions a:hover {
+    text-decoration: none;
+    list-style-type: none;
+    opacity:0.5;
+    filter:alpha(opacity=50);
+}
 
 
 

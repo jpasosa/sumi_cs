@@ -18,14 +18,13 @@ class Productos extends MX_Controller {
 		}
 	}
 
-
-	public function add() {
+	// AGREGAR UN PRODUCTO
+	public function add()
+	{
 		try {
-
 			$data 					= array();
 			$data['section'] 			= $this->section; // en donde estamos
 			$data['id_menu_left'] 	= 'menu_productos';
-
 			$error_message		= array();
 			$data['error_message'] 	= $error_message;
 			$data['title']				= 'Control Stock';
@@ -33,7 +32,8 @@ class Productos extends MX_Controller {
 			$data['id_content']		= 'productos';
 			$data['categorys'] 		= $this->get_categorias->getAll();
 
-			if($this->input->server('REQUEST_METHOD') == 'GET') { // START
+			if($this->input->server('REQUEST_METHOD') == 'GET')
+			{ 		// START
 				$product = $this->getDataEmpty();
 
 			}else{ // GUARDAR, por post.
@@ -53,23 +53,16 @@ class Productos extends MX_Controller {
 				}
 			}
 
-
 			// PRODUCTO
 			$data['product']				= $product;
 			// MENSAJES DE VALIDACIONES
 			$data['error_message']		= $error_message;
 
-
 			// VISTAS
 			$this->load->view('templates/heads', $data);
 			$this->load->view('templates/header', $data);
 			$this->load->view('templates/content', $data);
-			// INCLUYO VISTA DE PRODUCTOS EN EL CONTENT
 			$this->load->view('templates/footer', $data);
-
-
-
-
 
 		} catch (Exception $e) {
 			throw new Exception($e->getMessage());
@@ -80,27 +73,18 @@ class Productos extends MX_Controller {
 
 
 
-
+	// LISTAR LOSPRODUCTOS
 	public function listar()
 	{
 		try {
-
 			$data 					= array();
 			$data['section'] 			= $this->section; // en donde estamos
 			$data['id_menu_left'] 	= 'menu_productos';
-
 			$error_message		= array();
 			$data['error_message'] 	= $error_message;
 			$data['title']				= 'Control Stock';
 			$data['form_action'] 	= site_url('productos/add/');;
 			$data['id_content']		= 'listar_productos';
-			// $data['categorys'] 		= $this->get_categorias->getAll();
-
-
-			// PRODUCTO
-			// $data['product']				= $product;
-			// MENSAJES DE VALIDACIONES
-			// $data['error_message']		= $error_message;
 
 			// PRODUCTOS
 			$products 			= $this->get_productos->getAll();
@@ -110,7 +94,6 @@ class Productos extends MX_Controller {
 			$this->load->view('templates/heads', $data);
 			$this->load->view('templates/header', $data);
 			$this->load->view('templates/content', $data);
-			// INCLUYO VISTA DE PRODUCTOS EN EL CONTENT
 			$this->load->view('templates/footer', $data);
 
 		} catch (Exception $e) {
@@ -119,6 +102,7 @@ class Productos extends MX_Controller {
 
 	}
 
+	// VER EL PRODUCTO
 	public function ver($id_product)
 	{
 		try {
@@ -133,12 +117,10 @@ class Productos extends MX_Controller {
 			$product 				= $this->get_productos->getById($id_product);
 			$data['product']			= $product;
 
-
 			// VISTAS
 			$this->load->view('templates/heads', $data);
 			$this->load->view('templates/header', $data);
 			$this->load->view('templates/content', $data);
-			// INCLUYO VISTA DE PRODUCTOS EN EL CONTENT
 			$this->load->view('templates/footer', $data);
 
 		} catch (Exception $e) {
@@ -147,22 +129,18 @@ class Productos extends MX_Controller {
 
 	}
 
+	// EDITAR EL PRODUCTO
 	public function editar($id_product)
 	{
 		try {
-
 			$data 					= array();
 			$data['section'] 			= $this->section; // en donde estamos
 			$data['id_menu_left'] 	= 'menu_productos';
-
 			$error_message		= array();
 			$data['title']				= 'Control Stock';
 			$data['form_action'] 	= site_url('productos/editar/' . $id_product);;
 			$data['id_content']		= 'productos';
 			$data['categorys'] 		= $this->get_categorias->getAll();
-
-
-
 
 			if($this->input->server('REQUEST_METHOD') == 'GET')
 			{ // START
@@ -171,9 +149,7 @@ class Productos extends MX_Controller {
 					// ERROR NO PUDO AGARRAR EL PRODUCTO
 				}
 
-			}
-			else
-			{ // GUARDAR, por post.
+			}else { // GUARDAR, por post.
 				// PRODUCTOS
 				$product 				= $this->getData();
 				$product['id_productos']	= $id_product;
@@ -204,7 +180,6 @@ class Productos extends MX_Controller {
 			$this->load->view('templates/heads', $data);
 			$this->load->view('templates/header', $data);
 			$this->load->view('templates/content', $data);
-			// INCLUYO VISTA DE PRODUCTOS EN EL CONTENT
 			$this->load->view('templates/footer', $data);
 
 		} catch (Exception $e) {
@@ -213,13 +188,13 @@ class Productos extends MX_Controller {
 
 	}
 
+	// CONFIGURACION :: MENU PRINCIPAL
 	public function configuracion()
 	{
 		try {
 			$data 					= array();
 			$data['section'] 			= $this->section; // en donde estamos
 			$data['id_menu_left'] 	= 'menu_productos';
-
 			$error_message		= array();
 			$data['error_message'] 	= $error_message;
 			$data['title']				= 'Control Stock';
@@ -229,7 +204,6 @@ class Productos extends MX_Controller {
 			$this->load->view('templates/heads', $data);
 			$this->load->view('templates/header', $data);
 			$this->load->view('templates/content', $data);
-			// INCLUYO VISTA DE PRODUCTOS EN EL CONTENT
 			$this->load->view('templates/footer', $data);
 
 		} catch (Exception $e) {
@@ -245,7 +219,6 @@ class Productos extends MX_Controller {
 			$data 					= array();
 			$data['section'] 			= $this->section; // en donde estamos
 			$data['id_menu_left'] 	= 'menu_productos';
-
 			$error_message		= array();
 			$data['error_message'] 	= $error_message;
 			$data['title']				= 'Control Stock';
@@ -256,7 +229,6 @@ class Productos extends MX_Controller {
 			$this->load->view('templates/heads', $data);
 			$this->load->view('templates/header', $data);
 			$this->load->view('templates/content', $data);
-			// INCLUYO VISTA DE PRODUCTOS EN EL CONTENT
 			$this->load->view('templates/footer', $data);
 
 		} catch (Exception $e) {
@@ -267,13 +239,11 @@ class Productos extends MX_Controller {
 
 
 	// AGREGAR UNA CATEGORIA
-	public function add_categoria() {
+	public function add_categoria()
+	{
 		try {
-
 			$data 					= array();
 			$data['section'] 			= $this->section; // en donde estamos
-			// $data['id_menu_left'] 	= 'menu_productos';
-
 			$error_message		= array();
 			$data['error_message'] 	= $error_message;
 			$data['title']				= 'Control Stock';
@@ -281,20 +251,14 @@ class Productos extends MX_Controller {
 			$data['id_content']		= 'productos_configuracion';
 			$data['id_menu_left'] 	= 'menu_productos';
 			$data['box_title']		= 'ALTA DE LA CATEGORÍA';
-			// $data['categorys'] 		= $this->get_categorias->getAll();
 
-			if($this->input->server('REQUEST_METHOD') == 'GET') { // START
+			if($this->input->server('REQUEST_METHOD') == 'GET')
+			{ // START
 				$categoria = $this->getDataEmptyForCategory();
 
 			}else{ // GUARDAR, por post.
 				$categoria = $this->getDataForCategory();
-
 				$error_message = $this->action_categorias->validateAdd($categoria);
-
-
-
-
-
 				if(!$error_message)
 				{  	// PASO LA VALIDACIÓN
 					$insert_categoria = $this->action_categorias->insert($categoria);
@@ -307,7 +271,6 @@ class Productos extends MX_Controller {
 				}
 			}
 
-
 			// MENSAJES DE VALIDACIONES
 			$data['error_message']		= $error_message;
 			$data['categoria']			= $categoria;
@@ -316,12 +279,7 @@ class Productos extends MX_Controller {
 			$this->load->view('templates/heads', $data);
 			$this->load->view('templates/header', $data);
 			$this->load->view('templates/content', $data);
-			// INCLUYO VISTA DE PRODUCTOS EN EL CONTENT
 			$this->load->view('templates/footer', $data);
-
-
-
-
 
 		} catch (Exception $e) {
 			throw new Exception($e->getMessage());
@@ -332,11 +290,9 @@ class Productos extends MX_Controller {
 	public function editar_categoria($id_category)
 	{
 		try {
-
 			$data 					= array();
 			$data['section'] 			= $this->section; // en donde estamos
 			$data['id_menu_left'] 	= 'menu_productos';
-
 			$error_message		= array();
 			$data['title']				= 'Control Stock';
 			$data['form_action'] 	= site_url('productos/editar_categoria/' . $id_category);;
@@ -349,23 +305,15 @@ class Productos extends MX_Controller {
 					// ERROR NO PUDO AGARRAR EL PRODUCTO
 				}
 
-			}
-			else
-			{ // GUARDAR, por post.
+			}else{ // POST
 				// CATEGORIAS
-				$category 				= $this->getDataForCategory();
+				$category 					= $this->getDataForCategory();
 				$category['id_categorias']	= $id_category;
-
-				$error_message = $this->action_categorias->validateAddUpdated($category);
-
-
-
-
+				$error_message 			= $this->action_categorias->validateAddUpdated($category);
 
 				if(!$error_message)
 				{  	// PASO LA VALIDACIÓN
 					$update_category = $this->action_categorias->update($category);
-
 
 					if($update_category) {
 						$message = 'Categoria editada con éxito';
@@ -386,13 +334,10 @@ class Productos extends MX_Controller {
 			// MENSAJES DE VALIDACIONES
 			$data['error_message']		= $error_message;
 
-
-
 			// VISTAS
 			$this->load->view('templates/heads', $data);
 			$this->load->view('templates/header', $data);
 			$this->load->view('templates/content', $data);
-			// INCLUYO VISTA DE PRODUCTOS EN EL CONTENT
 			$this->load->view('templates/footer', $data);
 
 		} catch (Exception $e) {
@@ -400,20 +345,6 @@ class Productos extends MX_Controller {
 		}
 
 	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -447,32 +378,31 @@ class Productos extends MX_Controller {
 	protected function getData()
 	{
 		$product = array();
-
-
+		// CODIGO
 		if($this->input->get_post('codigo')) {
 			$product['codigo'] = trim($this->input->get_post('codigo'));
 		} else {
 			$product['codigo'] = '';
 		}
-
+		// DESCRIPCION
 		if($this->input->get_post('descripcion')) {
 			$product['descripcion'] = trim($this->input->get_post('descripcion'));
 		} else {
 			$product['descripcion'] = '';
 		}
-
+		// DETALLE
 		if($this->input->get_post('detalle')) {
 			$product['detalle'] = trim($this->input->get_post('detalle'));
 		} else {
 			$product['detalle'] = '';
 		}
-
+		// OBSERVACIONES
 		if($this->input->get_post('observaciones')) {
 			$product['observaciones'] = trim($this->input->get_post('observaciones'));
 		}else {
 			$product['observaciones'] = '';
 		}
-
+		// ID_CATEGORIAS
 		if($this->input->post('id_categorias')) {
 			$product['id_categorias']= $this->input->post('id_categorias');
 		} else {
@@ -485,7 +415,6 @@ class Productos extends MX_Controller {
 	protected function getDataForCategory()
 	{
 		$category = array();
-
 
 		if($this->input->get_post('nombre')) {
 			$category['nombre'] = trim($this->input->get_post('nombre'));
@@ -504,32 +433,6 @@ class Productos extends MX_Controller {
 		return $category;
 	}
 
-	// protected function getDataEditing()
-	// {
-	// 	$product = array();
-
-	// 	if($this->input->get_post('codigo')) {
-	// 		$product['codigo'] = trim($this->input->get_post('codigo'));
-	// 	}
-
-	// 	if($this->input->get_post('descripcion')) {
-	// 		$product['descripcion'] = trim($this->input->get_post('descripcion'));
-	// 	}
-
-	// 	if($this->input->get_post('detalle')) {
-	// 		$product['detalle'] = trim($this->input->get_post('detalle'));
-	// 	}
-
-	// 	if($this->input->get_post('observaciones')) {
-	// 		$product['observaciones'] = trim($this->input->get_post('observaciones'));
-	// 	}
-
-	// 	if($this->input->post('id_categorias')) {
-	// 		$product['id_categorias']= $this->input->post('id_categorias');
-	// 	}
-
-	// 	return $product;
-	// }
 
 
 

@@ -21,7 +21,7 @@
 			</div>
 		<?php endif ?>
 
-		<table class="table  table-condensed">
+		<table class="table  table-condensed lista_categorias">
 			<tr>
 				<th><strong>CODIGO</strong></th>
 				<th><strong>NOMBRE</strong></th>
