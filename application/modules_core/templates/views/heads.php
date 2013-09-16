@@ -32,6 +32,18 @@
 	<?php endif ?>
 
 
+<?php if (isset($css_grocery) && isset($js_grocery)): ?>
+
+
+<?php
+foreach($css_grocery as $file): ?>
+        <link type="text/css" rel="stylesheet" href="<?php echo $file; ?>" />
+<?php endforeach; ?>
+<?php foreach($js_grocery as $file): ?>
+        <script src="<?php echo $file; ?>"></script>
+<?php endforeach; ?>
+
+<?php endif ?>
 
 	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!--[if lt IE 9]>
