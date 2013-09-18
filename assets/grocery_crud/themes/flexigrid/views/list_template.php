@@ -115,11 +115,11 @@ if($success_message !== null){?>
 	</div>
 	<div class="pDiv">
 		<div class="pDiv2">
-			<div class="pGroup">
+			<!-- <div class="pGroup">
 				<div class="pSearch pButton quickSearchButton" id='quickSearchButton' title="<?php echo $this->l('list_search');?>">
 					<span></span>
 				</div>
-			</div>
+			</div> -->
 			<div class="btnseparator">
 			</div>
 			<div class="pGroup">

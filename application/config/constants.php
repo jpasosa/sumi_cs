@@ -54,6 +54,7 @@ if($_SERVER['REMOTE_ADDR'] == '127.0.0.1') { // LOCAL
 
 
 define('ASSETS',	 '/web/assets/');
+define('GROCERY_ASSETS',	 '/assets/grocery_crud/');
 
 
 /* End of file constants.php */

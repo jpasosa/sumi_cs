@@ -54,7 +54,7 @@
 
 				<!-- ENTRADA DE STOCK :: NUEVA ENTRADA -->
 				<?php if ( $section == 'entrada_stock.nueva_entrada' ): ?>
-					<?php $this->load->view('entrada_stock/agregar'); ?>
+					<?php $this->load->view('entrada_stock/agregar_productos'); ?>
 				<?php endif; ?>
 
 			</div>
