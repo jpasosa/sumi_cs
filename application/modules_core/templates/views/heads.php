@@ -20,14 +20,14 @@
 	<!-- ESTILO PRINCIPAL -->
 	<link href="<?php echo ASSETS . 'frontend/css/main.css'; ?>" type="text/css" rel="stylesheet" />
 
-	<!-- ESTILO PRODUCTOS -->
-	<?php if ( $section == 'productos.add' || $section == 'productos.listar'
-				|| $section == 'productos.editar' || $section == 'productos.ver' || $section == 'productos.configuracion'
-				|| $section == 'productos.confListarCategorias'
-				|| $section == 'productos.add_categoria'
-				|| $section == 'productos.editar_categoria'): ?>
-		<link href="<?php echo ASSETS . 'frontend/css/productos.css'; ?>" type="text/css" rel="stylesheet" />
-	<?php endif ?>
+	<!-- ESTILOS DE LOS CONTROLADORES -->
+	<?php if (isset($css_includes)): ?>
+		<?php foreach ($css_includes AS $css): ?>
+			<link href="<?php echo ASSETS . $css; ?>" type="text/css" rel="stylesheet" />
+		<?php endforeach; ?>
+	<?php endif; ?>
+
+
 
 	<!-- ESTILO STOCK -->
 	<?php if ( $section == 'entrada_stock.nueva_entrada'): ?>
@@ -60,10 +60,14 @@
 		var RUTA = "<?php echo RUTA; ?>";
 	</script>
 
-	<!-- JS ELIMINAR CATEGORIAS -->
-	<?php if ( $section == 'productos.confListarCategorias'): ?>
-		<script src="<?php echo ASSETS . 'frontend/js/del_category.js'; ?>"></script>
-	<?php endif ?>
+	<!-- JS DE LOS CONTROLADORES -->
+	<?php if (isset($js_includes)): ?>
+		<?php foreach ($js_includes AS $js): ?>
+			<script src="<?php echo ASSETS . $js; ?>"></script>
+		<?php endforeach; ?>
+	<?php endif; ?>
+
+
 
 	<!-- ICO -->
 	<link rel="icon" href="<?php echo ASSETS . 'frontend/images/favicon.ico'; ?>  " type="image/vnd.microsoft.icon" />
