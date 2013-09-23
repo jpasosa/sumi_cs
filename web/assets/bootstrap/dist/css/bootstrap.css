@@ -5044,6 +5044,13 @@ a.thumbnail:focus {
   background-color: #ff8282;
   border-color: #f61010;
 }
+
+.alert-notice {
+  color: #1c50e3;
+  background-color: #91aaf1;
+  border-color: #1c50e3;
+}
+
 .alert-error hr {
   border-top-color: #f61010;
 }

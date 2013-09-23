@@ -9,6 +9,28 @@ class Is_productos extends CI_Model
 	}
 
 
+	public function existProductWithCategory($id_category)
+	{
+
+		try {
+			$sql = "SELECT * FROM productos P
+					WHERE P.id_categorias = '$id_category'";
+			$query = $this->db->query($sql);
+			$resp = $query->result_array();
+
+			if(count($resp) > 0) {
+				return true;
+			} else {
+				return false;
+			}
+
+		} catch (Exception $e) {
+			return array();
+		}
+
+
+
+	}
 
 	public function existCodigo($code)
 	{

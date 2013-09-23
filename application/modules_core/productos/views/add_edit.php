@@ -25,6 +25,14 @@
 	<?php endif; ?>
 
 
+	<?php if ($section == 'productos.editar'): ?>
+		<div class="alert alert-notice fade in add_edit_product" >
+			<a class="close" data-dismiss="alert" href="#">&times;</a>
+			<?php echo 'No es posible editar el código.'; ?>
+		</div>
+	<?php endif ?>
+
+
 
 	<div class="inner-content new_article">
 		<div class="box_new_article">

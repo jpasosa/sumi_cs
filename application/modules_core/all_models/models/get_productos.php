@@ -35,7 +35,7 @@ class Get_productos extends CI_Model
 
 			if (isset($product[0])) {
 				$product 			= $product[0];
-				$product['codigo'] 	= $this->action_productos->removeCodeGuion($product['codigo']);
+				// $product['codigo'] 	= $this->action_productos->removeCodeGuion($product['codigo']);
 			} else {
 				$product = false;
 			}

@@ -181,7 +181,7 @@ class Productos extends MX_Controller {
 				$product 				= $this->getData();
 				$product['id_productos']	= $id_product;
 
-				$error_message = $this->action_productos->validateAdd($product);
+				$error_message = $this->action_productos->validateEdit($product);
 
 				if(!$error_message)
 				{  	// PASO LA VALIDACIÓN

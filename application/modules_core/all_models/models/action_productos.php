@@ -12,15 +12,24 @@ class Action_productos extends CI_Model
 	{
 		$errors = false;
 
-		// if($product['codigo'] == '') {
-		// 	$errors['codigo'] = 'El codigo es obligatorio';
-		// } else {
-		// 	$valid_codigo = $this->validateCodigo($product['codigo']);
-		// 	if ($valid_codigo['validado'] == false) {
-		// 		$errors['codigo'] = $valid_codigo['message'];
-		// 	}
-		// }
+		if($product['descripcion'] == '') {
+			$errors['descripcion'] = 'La descripcion es obligatoria';
+		}
 
+		if($product['detalle'] == '') {
+			$errors['descripcion'] = 'El detalle es obligatorio';
+		}
+
+		if($product['id_categorias'] == '') {
+			$errors['id_categorias'] = 'Debe indicar la categoría';
+		}
+
+		return $errors;
+	}
+
+	public function validateEdit($product)
+	{
+		$errors = false;
 
 		if($product['descripcion'] == '') {
 			$errors['descripcion'] = 'La descripcion es obligatoria';
@@ -32,6 +41,12 @@ class Action_productos extends CI_Model
 
 		if($product['id_categorias'] == '') {
 			$errors['id_categorias'] = 'Debe indicar la categoría';
+		}
+
+		$chech_category = $this->checkCodeWithCategory($product['codigo'], $product['id_categorias']);
+
+		if(!$chech_category) {
+			$errors['code_category'] = 'No coincida la categoría con el código del producto.';
 		}
 
 		return $errors;
@@ -51,7 +66,8 @@ class Action_productos extends CI_Model
 
 	public function update($product)
 	{
-		$product['codigo'] = $this->putWellCodigo($product['codigo']);
+		unset($product['codigo']);
+		// $product['codigo'] = $this->putWellCodigo($product['codigo']);
 		$this->db->where('id_productos', $product['id_productos']);
 		$this->db->update('productos', $product);
 		$update = $this->db->affected_rows();
@@ -120,38 +136,69 @@ class Action_productos extends CI_Model
 	// PONE EL CÓDIGO DEL PRODUCTO QUE DEBE IR AUTOMÁTICAMENTE. SELECCIONA EL MAYOR ID
 	// QUE CORESPONDA A LA CATEGORIA DADA Y PONE XXX - 99999
 	private function putWellCodigo($id_category) {
-		// Busco el último id de la categoria dada
-		$sql = "SELECT * FROM productos P
-					WHERE P.id_categorias = $id_category
-					ORDER BY id_productos DESC LIMIT 1" ;
-		$query = $this->db->query($sql);
+		// tengo que saber si existe algún producto con esta categoria.
+		$exist_product = $this->is_productos->existProductWithCategory($id_category);
 
-		$last_id_category = $query->result_array();
+		if ($exist_product)
+		{
+			// Busco el último id de la categoria dada
+			$sql = "SELECT * FROM productos P
+						WHERE P.id_categorias = $id_category
+						ORDER BY id_productos DESC LIMIT 1" ;
+			$query = $this->db->query($sql);
 
-		if (isset($last_id_category[0])) {
-			$last_code = $last_id_category[0]['codigo'];
-		} else {
-			$product = false;
+			$last_id_category = $query->result_array();
+
+			if (isset($last_id_category[0])) {
+				$last_code = $last_id_category[0]['codigo'];
+			} else {
+				$last_code = 0;
+			}
+
+			$last_code 			= trim($last_code);
+			$code_explode 		= explode("-", $last_code);
+			$new_numeric_code= $code_explode[1] + 1;
+
+			// CODIFICO LOS NUMEROS
+			$count_num = mb_strlen( $new_numeric_code );
+			if($count_num == 1) {
+				$new_numeric_code = '0000' . $new_numeric_code;
+			}elseif ($count_num == 2) {
+				$new_numeric_code = '000' . $new_numeric_code;
+			}elseif ($count_num == 3) {
+				$new_numeric_code = '00' . $new_numeric_code;
+			}elseif ($count_num == 4) {
+				$new_numeric_code = '0' . $new_numeric_code;
+			}
+			$code = strtoupper(trim($code_explode[0])) . ' - ' . $new_numeric_code;
+
+		} else { // NO HAY NINGÚN PRODUCTO CON ESA CATEGORÍA TODAVÍÁ
+
+			$code_abrev = $this->get_categorias->getById($id_category);
+			$code_abrev = trim($code_abrev['codigo_abrev']);
+
+			$code = $code_abrev . ' - ' . '00000';
 		}
 
-		$last_code 			= trim($last_code);
-		$code_explode 		= explode("-", $last_code);
-		$new_numeric_code= $code_explode[1] + 1;
 
-		// CODIFICO LOS NUMEROS
-		$count_num = mb_strlen( $new_numeric_code );
-		if($count_num == 1) {
-			$new_numeric_code = '0000' . $new_numeric_code;
-		}elseif ($count_num == 2) {
-			$new_numeric_code = '000' . $new_numeric_code;
-		}elseif ($count_num == 3) {
-			$new_numeric_code = '00' . $new_numeric_code;
-		}elseif ($count_num == 4) {
-			$new_numeric_code = '0' . $new_numeric_code;
-		}
-		$code = strtoupper(trim($code_explode[0])) . ' - ' . $new_numeric_code;
+
+
 
 		return $code;
+	}
+
+	private function checkCodeWithCategory($code, $category)
+	{
+		$code_explode = explode("-", $code);
+		$letters_code = trim($code_explode[0]);
+		$cat 			= $this->get_categorias->getById($category);
+		$code_abrev 	= trim($cat['codigo_abrev']);
+
+		if ($code_abrev != $letters_code) {
+			return false;
+		} else {
+			return true;
+		}
 	}
 
 	// SACA EL GUION DEL MEDIO DEL PRODUCTO, PARA QUE PODAMOS EDITARLO
