@@ -12,21 +12,22 @@ class Action_productos extends CI_Model
 	{
 		$errors = false;
 
-		if($product['codigo'] == '') {
-			$errors['codigo'] = 'El codigo es obligatorio';
-		} else {
-			$valid_codigo = $this->validateCodigo($product['codigo']);
-			if ($valid_codigo['validado'] == false) {
-				$errors['codigo'] = $valid_codigo['message'];
-			}
-		}
-
-
-
+		// if($product['codigo'] == '') {
+		// 	$errors['codigo'] = 'El codigo es obligatorio';
+		// } else {
+		// 	$valid_codigo = $this->validateCodigo($product['codigo']);
+		// 	if ($valid_codigo['validado'] == false) {
+		// 		$errors['codigo'] = $valid_codigo['message'];
+		// 	}
+		// }
 
 
 		if($product['descripcion'] == '') {
 			$errors['descripcion'] = 'La descripcion es obligatoria';
+		}
+
+		if($product['detalle'] == '') {
+			$errors['descripcion'] = 'El detalle es obligatorio';
 		}
 
 		if($product['id_categorias'] == '') {
@@ -38,7 +39,7 @@ class Action_productos extends CI_Model
 
 	public function insert($product)
 	{
-		$product['codigo'] = $this->putWellCodigo($product['codigo']);
+		$product['codigo'] = $this->putWellCodigo($product['id_categorias']);
 		$insert_prod = $this->db->insert('productos', $product);
 		if($insert_prod) {
 			return true;
@@ -64,76 +65,92 @@ class Action_productos extends CI_Model
 	}
 
 	// VALIDA EL CAMPO CODIGO
-	private function validateCodigo($code) {
-		$ret['validado']	= true;
-		$ret['message']	= '';
-		$code 			= trim($code);
-		$code_explode 	= explode(" ", $code);
+	// private function validateCodigo($code) {
+	// 	$ret['validado']	= true;
+	// 	$ret['message']	= '';
+	// 	$code 			= trim($code);
+	// 	$code_explode 	= explode(" ", $code);
 
 
-		// Si no son dos terminos esta mal el codigo. Deben ser dos términos separados por un espacio.
-		if(count($code_explode) != 2) {
-			$ret['validado'] 	= false;
-			$ret['message'] = 'Código incorrecto. Deben ser dos términos separados por un espacio';
-			return $ret;
+	// 	// Si no son dos terminos esta mal el codigo. Deben ser dos términos separados por un espacio.
+	// 	if(count($code_explode) != 2) {
+	// 		$ret['validado'] 	= false;
+	// 		$ret['message'] = 'Código incorrecto. Deben ser dos términos separados por un espacio';
+	// 		return $ret;
+	// 	} else {
+	// 		$cod_abrev = strtoupper($code_explode[0]);
+	// 		$numeros 	= $code_explode[1];
+	// 	}
+
+	// 	// CONTROLA QUE EXISTA EL CODIGO DE ABREVIACION
+	// 	$exist_abrev = $this->get_categorias->getByCodigoAbrev($cod_abrev);
+	// 	if(!$exist_abrev) {
+	// 		$ret['validado'] 	= false;
+	// 		$ret['message'] 	= 'El código de la categoria cargado no existe.';
+	// 		return $ret;
+	// 	}
+
+	// 	// CONTROLA QUE LOS NUMEROS NO SE PASEN DE 5CARACTERES Y QUE SEAN SOLO NUMEROS
+	// 	$patron = "/^[[:digit:]]+$/";
+	// 	if (preg_match($patron, $numeros)) {
+	// 		$cant_numeros = strlen($numeros);
+	// 		if($cant_numeros > 5) {
+	// 			$ret['validado'] 		= false;
+	// 			$ret['message'] 	= 'El código está mal escrito. Hay más de 5 dígitos en los números.';
+	// 			return $ret;
+	// 		}
+	// 	} else {
+	// 		$ret['validado'] 		= false;
+	// 		$ret['message'] 	= 'Código incorrecto. No van letras en numeración.';
+	// 		return $ret;
+	// 	}
+
+	// 	// CONTROLA QUE NO EXISTA EL CÓDIGO
+	// 	$code_for_insert = $this->putWellCodigo($code);
+	// 	$exist_code = $this->is_productos->existCodigo($code_for_insert);
+	// 	if($exist_code) {
+	// 		$ret['validado'] 		= false;
+	// 		$ret['message'] 	= 'Código ya existente.';
+	// 		return $ret;
+	// 	}
+
+	// 	return $ret;
+	// }
+
+	// PONE EL CÓDIGO DEL PRODUCTO QUE DEBE IR AUTOMÁTICAMENTE. SELECCIONA EL MAYOR ID
+	// QUE CORESPONDA A LA CATEGORIA DADA Y PONE XXX - 99999
+	private function putWellCodigo($id_category) {
+		// Busco el último id de la categoria dada
+		$sql = "SELECT * FROM productos P
+					WHERE P.id_categorias = $id_category
+					ORDER BY id_productos DESC LIMIT 1" ;
+		$query = $this->db->query($sql);
+
+		$last_id_category = $query->result_array();
+
+		if (isset($last_id_category[0])) {
+			$last_code = $last_id_category[0]['codigo'];
 		} else {
-			$cod_abrev = strtoupper($code_explode[0]);
-			$numeros 	= $code_explode[1];
+			$product = false;
 		}
 
-		// CONTROLA QUE EXISTA EL CODIGO DE ABREVIACION
-		$exist_abrev = $this->get_categorias->getByCodigoAbrev($cod_abrev);
-		if(!$exist_abrev) {
-			$ret['validado'] 	= false;
-			$ret['message'] 	= 'El código de la categoria cargado no existe.';
-			return $ret;
-		}
-
-		// CONTROLA QUE LOS NUMEROS NO SE PASEN DE 5CARACTERES Y QUE SEAN SOLO NUMEROS
-		$patron = "/^[[:digit:]]+$/";
-		if (preg_match($patron, $numeros)) {
-			$cant_numeros = strlen($numeros);
-			if($cant_numeros > 5) {
-				$ret['validado'] 		= false;
-				$ret['message'] 	= 'El código está mal escrito. Hay más de 5 dígitos en los números.';
-				return $ret;
-			}
-		} else {
-			$ret['validado'] 		= false;
-			$ret['message'] 	= 'Código incorrecto. No van letras en numeración.';
-			return $ret;
-		}
-
-		// CONTROLA QUE NO EXISTA EL CÓDIGO
-		$code_for_insert = $this->putWellCodigo($code);
-		$exist_code = $this->is_productos->existCodigo($code_for_insert);
-		if($exist_code) {
-			$ret['validado'] 		= false;
-			$ret['message'] 	= 'Código ya existente.';
-			return $ret;
-		}
-
-		return $ret;
-	}
-
-	// PONE DE LA FORMA QUE DEBE IR ORDENADAMENTE EL CODIGO DEL PRODUCTO
-	private function putWellCodigo($code) {
-		$code = trim($code);
-		$code_explode = explode(" ", $code);
+		$last_code 			= trim($last_code);
+		$code_explode 		= explode("-", $last_code);
+		$new_numeric_code= $code_explode[1] + 1;
 
 		// CODIFICO LOS NUMEROS
-		$numeros	= $code_explode[1];
-		$count_num = mb_strlen( $numeros );
+		$count_num = mb_strlen( $new_numeric_code );
 		if($count_num == 1) {
-			$numeros = '0000' . $numeros;
+			$new_numeric_code = '0000' . $new_numeric_code;
 		}elseif ($count_num == 2) {
-			$numeros = '000' . $numeros;
+			$new_numeric_code = '000' . $new_numeric_code;
 		}elseif ($count_num == 3) {
-			$numeros = '00' . $numeros;
+			$new_numeric_code = '00' . $new_numeric_code;
 		}elseif ($count_num == 4) {
-			$numeros = '0' . $numeros;
+			$new_numeric_code = '0' . $new_numeric_code;
 		}
-		$code = strtoupper($code_explode[0]) . ' - ' . $numeros;
+		$code = strtoupper(trim($code_explode[0])) . ' - ' . $new_numeric_code;
+
 		return $code;
 	}
 

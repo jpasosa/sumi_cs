@@ -38,24 +38,26 @@
 			<form action="<?php echo $form_action; ?>" method="post" enctype="multipart/form-data" >
 				<div class="image_top">
 					<img src="<?php echo ASSETS . 'frontend/images/alta_productos.png'; ?>" width="198" height="114" alt="alta" />
-					<div class="code"> <!-- CODIGO DEL ARTICULO-->
-						<label>Código</label>
-						<input type="text" name="codigo" value="<?php if($product['codigo'] != ''): echo $product['codigo']; endif; ?>">
+					<!-- CODIGO DEL ARTICULO-->
+					<div class="code">
+						<label>Código (*)</label>
+						<input type="text" name="codigo"
+							value="<?php if($product['codigo'] != ''): echo $product['codigo']; else: echo 'Valor automático'; endif; ?>" readonly="readonly">
 					</div>
 					<!-- DESCRIPCION -->
 					<div class="descripcion">
-						<label>Descripción:</label>
+						<label>Descripción (*)</label>
 						<input type="text" name="descripcion" value="<?php if($product['descripcion'] != ''): echo $product['descripcion']; endif; ?>">
 					</div>
 				</div>
 				<div class="bottom">
 					<div class="detalle"> <!-- DESCRIPCION DEL ARTICULO -->
-						<label>Detalle:</label>
+						<label>Detalle (*)</label>
 						<input type="text" name="detalle" value="<?php if($product['detalle'] != ''): echo $product['detalle']; endif; ?>">
 					</div>
 
 					<div class="observaciones"> <!-- REFERENCIA DEL ARTICULO -->
-						<label>Observaciones:</label>
+						<label>Observaciones</label>
 						<textarea name="observaciones"><?php if($product['observaciones'] != ''): echo $product['observaciones']; endif; ?></textarea>
 					</div>
 
