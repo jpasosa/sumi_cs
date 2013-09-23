@@ -32,6 +32,8 @@ class Entrada_stock extends MX_Controller {
 			$data['error_message'] 	= $error_message;
 			$data['title']				= 'Control Stock';
 			$data['id_content']		= 'entrada_stock';
+			$data['view_template']	= 'entrada_stock/agregar_productos';
+
 
 			// GROCERY CRUD
 			$this->load->library('grocery_CRUD');
@@ -54,6 +56,7 @@ class Entrada_stock extends MX_Controller {
 					->display_as('observaciones','Observaciones');
 			$crud->field_type( 'observaciones' , 'text' );
 			$crud->required_fields('id_productos','id_tipodocumento','nro_tipodocumento','precio', 'cantidad');
+			$crud->unset_texteditor('observaciones');
 			$crud->unset_export();
 			$crud->unset_print();
 			// CONFIGURACIONES

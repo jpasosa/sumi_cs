@@ -5,7 +5,16 @@ class Productos extends MX_Controller {
 
 	public function __construct(){
 		parent::__construct();
+
 		$this->section = $this->router->fetch_class() . '.' . $this->router->fetch_method();
+
+		// DATA DE VISTAS
+		$this->data 					= array();
+		$this->data['configure_link']		= 'productos/configuracion';
+		$this->data['configure_link_title']	= 'Configuración de Productos';
+
+
+
 	}
 
 
@@ -22,15 +31,14 @@ class Productos extends MX_Controller {
 	public function add()
 	{
 		try {
-			$data 					= array();
+			$data 					= $this->data;
 			$data['section'] 			= $this->section; // en donde estamos
-			$data['id_menu_left'] 	= 'menu_productos';
 			$error_message		= array();
 			$data['error_message'] 	= $error_message;
-			$data['title']				= 'Control Stock';
 			$data['form_action'] 	= site_url('productos/add/');;
-			$data['id_content']		= 'productos';
 			$data['categorys'] 		= $this->get_categorias->getAll();
+
+
 
 			if($this->input->server('REQUEST_METHOD') == 'GET')
 			{ 		// START
@@ -58,7 +66,15 @@ class Productos extends MX_Controller {
 			// MENSAJES DE VALIDACIONES
 			$data['error_message']		= $error_message;
 
-			// VISTAS
+			// DATOS DE VISTAS
+			$data['id_menu_left'] 	= 'menu_productos';
+			$data['title']				= 'Control Stock';
+			$data['id_content']		= 'productos';
+			$data['view_template']	= 'productos/add_edit';
+			$data['show_list']		= true;
+
+
+			// LEVANTO VISTAS
 			$this->load->view('templates/heads', $data);
 			$this->load->view('templates/header', $data);
 			$this->load->view('templates/content', $data);
@@ -77,20 +93,26 @@ class Productos extends MX_Controller {
 	public function listar()
 	{
 		try {
-			$data 					= array();
+			$data 					= $this->data;
 			$data['section'] 			= $this->section; // en donde estamos
-			$data['id_menu_left'] 	= 'menu_productos';
+
 			$error_message		= array();
 			$data['error_message'] 	= $error_message;
-			$data['title']				= 'Control Stock';
+
 			$data['form_action'] 	= site_url('productos/add/');;
-			$data['id_content']		= 'listar_productos';
+
 
 			// PRODUCTOS
 			$products 			= $this->get_productos->getAll();
 			$data['products']	= $products;
 
-			// VISTAS
+			// DATOS DE VISTAS
+			$data['id_menu_left'] 	= 'menu_productos';
+			$data['title']				= 'Control Stock';
+			$data['id_content']		= 'listar_productos';
+			$data['view_template']	= 'productos/listar';
+			$data['show_add']		= true;
+			// LEVANTO VISTAS
 			$this->load->view('templates/heads', $data);
 			$this->load->view('templates/header', $data);
 			$this->load->view('templates/content', $data);
@@ -106,18 +128,25 @@ class Productos extends MX_Controller {
 	public function ver($id_product)
 	{
 		try {
-			$data 					= array();
+			$data 					= $this->data;
 			$data['section'] 			= $this->section; // en donde estamos
-			$data['id_menu_left'] 	= 'menu_productos';
+
 
 			$error_message		= array();
 			$data['error_message'] 	= $error_message;
-			$data['title']				= 'Control Stock :: Ver Producto';
-			$data['id_content']		= 'productos';
+
+
 			$product 				= $this->get_productos->getById($id_product);
 			$data['product']			= $product;
 
-			// VISTAS
+			// DATOS DE VISTAS
+			$data['id_menu_left'] 	= 'menu_productos';
+			$data['title']				= 'Control Stock :: Ver Producto';
+			$data['id_content']		= 'productos';
+			$data['view_template']	= 'productos/ver';
+			$data['show_add']		= true;
+			$data['show_list']		= true;
+			// LEVANTO VISTAS
 			$this->load->view('templates/heads', $data);
 			$this->load->view('templates/header', $data);
 			$this->load->view('templates/content', $data);
@@ -133,14 +162,12 @@ class Productos extends MX_Controller {
 	public function editar($id_product)
 	{
 		try {
-			$data 					= array();
+			$data 					= $this->data;
 			$data['section'] 			= $this->section; // en donde estamos
-			$data['id_menu_left'] 	= 'menu_productos';
 			$error_message		= array();
-			$data['title']				= 'Control Stock';
 			$data['form_action'] 	= site_url('productos/editar/' . $id_product);;
-			$data['id_content']		= 'productos';
 			$data['categorys'] 		= $this->get_categorias->getAll();
+
 
 			if($this->input->server('REQUEST_METHOD') == 'GET')
 			{ // START
@@ -176,7 +203,14 @@ class Productos extends MX_Controller {
 			// MENSAJES DE VALIDACIONES
 			$data['error_message']		= $error_message;
 
-			// VISTAS
+			// DATOS DE VISTAS
+			$data['id_menu_left'] 	= 'menu_productos';
+			$data['title']				= 'Control Stock';
+			$data['id_content']		= 'productos';
+			$data['view_template']	= 'productos/add_edit';
+			$data['show_add']		= true;
+			$data['show_list']		= true;
+			// LEVANTO VISTAS
 			$this->load->view('templates/heads', $data);
 			$this->load->view('templates/header', $data);
 			$this->load->view('templates/content', $data);
@@ -192,15 +226,20 @@ class Productos extends MX_Controller {
 	public function configuracion()
 	{
 		try {
-			$data 					= array();
+			$data 					= $this->data;
 			$data['section'] 			= $this->section; // en donde estamos
-			$data['id_menu_left'] 	= 'menu_productos';
+
 			$error_message		= array();
 			$data['error_message'] 	= $error_message;
+
+			// DATOS DE VISTAS
+			$data['id_menu_left'] 	= 'menu_productos';
 			$data['title']				= 'Control Stock';
 			$data['id_content']		= 'productos_configuracion';
-
-			// VISTAS
+			$data['view_template']	= 'productos/config';
+			$data['show_add']		= true;
+			$data['show_list']		= true;
+			// LEVANTO VISTAS
 			$this->load->view('templates/heads', $data);
 			$this->load->view('templates/header', $data);
 			$this->load->view('templates/content', $data);
@@ -216,15 +255,23 @@ class Productos extends MX_Controller {
 	public function confListarCategorias()
 	{
 		try {
-			$data 					= array();
+			$data 					= $this->data;
 			$data['section'] 			= $this->section; // en donde estamos
-			$data['id_menu_left'] 	= 'menu_productos';
+
 			$error_message		= array();
 			$data['error_message'] 	= $error_message;
-			$data['title']				= 'Control Stock';
-			$data['id_content']		= 'productos_configuracion';
+
+
 			$data['categorias']		= $this->get_categorias->getAll();
 
+
+			// DATOS DE VISTAS
+			$data['id_menu_left'] 	= 'menu_productos';
+			$data['title']				= 'Control Stock';
+			$data['id_content']		= 'productos_configuracion';
+			$data['view_template']	= 'productos/config_listado_categorias';
+			$data['show_add']		= true;
+			$data['show_list']		= true;
 			// VISTAS
 			$this->load->view('templates/heads', $data);
 			$this->load->view('templates/header', $data);
@@ -242,15 +289,15 @@ class Productos extends MX_Controller {
 	public function add_categoria()
 	{
 		try {
-			$data 					= array();
+			$data 					= $this->data;
 			$data['section'] 			= $this->section; // en donde estamos
 			$error_message		= array();
 			$data['error_message'] 	= $error_message;
-			$data['title']				= 'Control Stock';
+
 			$data['form_action'] 	= site_url('productos/add_categoria/');;
-			$data['id_content']		= 'productos_configuracion';
-			$data['id_menu_left'] 	= 'menu_productos';
-			$data['box_title']		= 'ALTA DE LA CATEGORÍA';
+
+
+
 
 			if($this->input->server('REQUEST_METHOD') == 'GET')
 			{ // START
@@ -275,7 +322,15 @@ class Productos extends MX_Controller {
 			$data['error_message']		= $error_message;
 			$data['categoria']			= $categoria;
 
-			// VISTAS
+			// DATOS DE VISTAS
+			$data['title']				= 'Control Stock';
+			$data['id_content']		= 'productos_configuracion';
+			$data['id_menu_left'] 	= 'menu_productos';
+			$data['box_title']		= 'ALTA DE LA CATEGORÍA';
+			$data['view_template']	= 'productos/config_add_edit_categorias';
+			$data['show_add']		= true;
+			$data['show_list']		= true;
+			// LEVANTO VISTAS
 			$this->load->view('templates/heads', $data);
 			$this->load->view('templates/header', $data);
 			$this->load->view('templates/content', $data);
@@ -290,14 +345,15 @@ class Productos extends MX_Controller {
 	public function editar_categoria($id_category)
 	{
 		try {
-			$data 					= array();
+			$data 					= $this->data;
 			$data['section'] 			= $this->section; // en donde estamos
-			$data['id_menu_left'] 	= 'menu_productos';
+
 			$error_message		= array();
-			$data['title']				= 'Control Stock';
+
 			$data['form_action'] 	= site_url('productos/editar_categoria/' . $id_category);;
-			$data['id_content']		= 'productos_configuracion';
-			$data['box_title']		= 'EDICIÓN DE LA CATEGORÍA';
+
+
+
 			if($this->input->server('REQUEST_METHOD') == 'GET')
 			{ // START
 				$category = $this->get_categorias->getById($id_category);
@@ -333,8 +389,15 @@ class Productos extends MX_Controller {
 			$data['categoria']				= $category;
 			// MENSAJES DE VALIDACIONES
 			$data['error_message']		= $error_message;
-
-			// VISTAS
+			// DATOS DE VISTAS
+			$data['id_menu_left'] 	= 'menu_productos';
+			$data['title']				= 'Control Stock';
+			$data['id_content']		= 'productos_configuracion';
+			$data['box_title']		= 'EDICIÓN DE LA CATEGORÍA';
+			$data['view_template']	= 'productos/config_add_edit_categorias';
+			$data['show_add']		= true;
+			$data['show_list']		= true;
+			// LEVANTO VISTAS
 			$this->load->view('templates/heads', $data);
 			$this->load->view('templates/header', $data);
 			$this->load->view('templates/content', $data);

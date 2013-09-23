@@ -18,6 +18,7 @@ class Homepage extends MX_Controller
 		$data['section'] 			= $this->section;
 		$data['id_menu_left'] 	= '';
 		$data['id_content']		= 'homepage';
+		$data['view_template']	= 'homepage/homepage';
 		// VISTAS
 		$this->load->view('templates/heads', $data);
 		$this->load->view('templates/header', $data);
