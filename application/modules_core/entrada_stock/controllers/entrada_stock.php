@@ -8,6 +8,10 @@ class Entrada_stock extends MX_Controller {
 
 		$this->section = $this->router->fetch_class() . '.' . $this->router->fetch_method();
 
+		// DATOS DE VISTAS, EN TODO ENTRADA DE STOCK
+		$this->data 					= array();
+		$this->data['view_menu_izq']	= 'entrada_stock/menu_izq';
+
 	}
 
 
@@ -24,7 +28,7 @@ class Entrada_stock extends MX_Controller {
 	public function nueva_entrada($params = null) {
 		try {
 
-			$data 					= array();
+			$data 					= $this->data;
 			$data['section'] 			= $this->section; // en donde estamos
 			$data['id_menu_left'] 	= 'menu_entradas';
 
@@ -82,6 +86,10 @@ class Entrada_stock extends MX_Controller {
           //                                );
 
 
+			// DATOS DE VISTAS
+			$data['show_add']		= true;
+			$data['configure_link'] 	= true;
+			$data['show_list'] 		= true;
 			// VISTAS
 			$this->load->view('templates/heads', $data);
 			$this->load->view('templates/header', $data);

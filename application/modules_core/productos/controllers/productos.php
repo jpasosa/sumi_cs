@@ -15,6 +15,7 @@ class Productos extends MX_Controller {
 		$this->data['css_includes']		= array();
 		$this->data['js_includes']		= array();
 		$this->css_includes				= array('frontend/css/productos.css');
+		$this->data['view_menu_izq']	= 'productos/menu_izq';
 
 	}
 
