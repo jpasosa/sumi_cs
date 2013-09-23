@@ -42,7 +42,7 @@ class Entrada_stock extends MX_Controller {
 			// $crud->set_subject('Entradas al Stock');
 			$crud->set_theme('flexigrid');
 			$crud->set_table('entradas');
-			$crud->set_relation('id_productos', 'productos', 'descripcion');
+			$crud->set_relation('id_productos', 'productos', '{descripcion} :: {detalle} :: {codigo}');
 			$crud->set_relation('id_tipodocumento', 'tipodocumentos', 'nombre');
 			$fields = array('id_productos','id_tipodocumento','nro_tipodocumento','precio', 'cantidad', 'observaciones');
 			$crud->columns($fields);
