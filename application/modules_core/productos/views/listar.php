@@ -37,7 +37,14 @@
 			<a class="close" data-dismiss="alert" href="#">&times;</a>
 			<?php echo $this->session->flashdata('flash_notice'); ?>
 		</div>
-	<?php endif ?>
+	<?php endif; ?>
+
+	<?php if ($this->session->flashdata('flash_error')): ?> <!-- TRABAJO CREADO CORRECTAMENTE -->
+		<div class="alert alert-error fade in" >
+			<a class="close" data-dismiss="alert" href="#">&times;</a>
+			<?php echo $this->session->flashdata('flash_error'); ?>
+		</div>
+	<?php endif; ?>
 
 	<table class="table  table-condensed">
 		<tr>
@@ -73,7 +80,7 @@
 						<img class="edit" src="<?php echo ASSETS . 'frontend/images/icons/edit_30.png'; ?>" alt="editar" title="Editar" width="20" height="20" />
 					</a>
 					<a href="#">
-						<img class="del del_producto" id="<?php echo $pr['id_productos']; ?>" src="<?php echo ASSETS . 'frontend/images/icons/del_30.png'; ?>" alt="eliminar" title="Borrar" width="20" height="20" />
+						<img class="del del_product" id="<?php echo $pr['id_productos']; ?>" src="<?php echo ASSETS . 'frontend/images/icons/del_30.png'; ?>" alt="eliminar" title="Borrar" width="20" height="20" />
 					</a>
 				</td>
 			</tr>

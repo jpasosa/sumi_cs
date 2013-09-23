@@ -113,6 +113,7 @@ class Productos extends MX_Controller {
 			$data['view_template']	= 'productos/listar';
 			$data['show_add']		= true;
 			$data['css_includes']	= $this->css_includes;
+			$data['js_includes']		= array('frontend/js/del_product.js');
 			// LEVANTO VISTAS
 			$this->load->view('templates/heads', $data);
 			$this->load->view('templates/header', $data);
@@ -278,7 +279,6 @@ class Productos extends MX_Controller {
 			$data['js_includes']		= array('frontend/js/del_category.js');
 			$data['show_add']		= true;
 			$data['show_list']		= true;
-
 			// VISTAS
 			$this->load->view('templates/heads', $data);
 			$this->load->view('templates/header', $data);
@@ -337,6 +337,7 @@ class Productos extends MX_Controller {
 			$data['view_template']	= 'productos/config_add_edit_categorias';
 			$data['show_add']		= true;
 			$data['show_list']		= true;
+			$data['css_includes']	= $this->css_includes;
 			// LEVANTO VISTAS
 			$this->load->view('templates/heads', $data);
 			$this->load->view('templates/header', $data);

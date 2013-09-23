@@ -80,6 +80,26 @@ class Action_productos extends CI_Model
 
 	}
 
+	// ELIMINA UN PRODUCTO, DEBE CHEQUEAR QUE NO HAYA INGRESADO AL STOCK.
+	public function erase($id_product)
+	{
+		$entradas = $this->get_entradas->getByProductos($id_product);
+
+
+		if(!$entradas)
+		{
+			$erase = $this->db->delete('productos', array('id_productos' => $id_product));
+
+
+			if($erase) {
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+
 	// VALIDA EL CAMPO CODIGO
 	// private function validateCodigo($code) {
 	// 	$ret['validado']	= true;
