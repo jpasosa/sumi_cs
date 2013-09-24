@@ -14,7 +14,8 @@ class Entrada_stock extends MX_Controller {
 		// DATOS DE VISTAS, EN TODO ENTRADA DE STOCK
 		$this->data 					= array();
 		$this->data['view_menu_izq']	= 'entrada_stock/menu_izq';
-
+		$this->css_includes				= array('frontend/css/entrada_stock.css');
+		$this->data['title_section']		= 'INGRESOS AL STOCK';
 	}
 
 
@@ -103,6 +104,7 @@ class Entrada_stock extends MX_Controller {
 			$data['show_add']		= true;
 			$data['configure_link'] 	= true;
 			$data['show_list'] 		= true;
+			$data['css_includes']	= $this->css_includes;
 			// VISTAS
 			$this->load->view('templates/heads', $data);
 			$this->load->view('templates/header', $data);

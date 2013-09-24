@@ -12,6 +12,7 @@ class Homepage extends MX_Controller
 		$this->css_includes				= array('frontend/css/productos.css');
 		$this->data 					= array();
 		$this->data['view_menu_izq']	= 'productos/menu_izq';
+		$this->data['title_section']		= 'HOME';
 
 	}
 

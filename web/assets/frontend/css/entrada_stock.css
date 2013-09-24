@@ -1,3 +1,10 @@
+.left#menu_entradas a {
+    margin: 20px auto 20px auto;
+    width: 100%;
+    float: left;
+    text-align: center;
+}
+
 
 
 #entrada_stock .title {
