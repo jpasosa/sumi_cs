@@ -8,6 +8,9 @@ class Entrada_stock extends MX_Controller {
 
 		$this->section = $this->router->fetch_class() . '.' . $this->router->fetch_method();
 
+		$last_uri		= $this->uri->total_segments();
+		$this->last_uri	= $this->uri->segment($last_uri);
+
 		// DATOS DE VISTAS, EN TODO ENTRADA DE STOCK
 		$this->data 					= array();
 		$this->data['view_menu_izq']	= 'entrada_stock/menu_izq';
@@ -43,23 +46,33 @@ class Entrada_stock extends MX_Controller {
 			$this->load->library('grocery_CRUD');
 			$crud = new grocery_CRUD();
 			// TABLAS
-			// $crud->set_subject('Entradas al Stock');
+			$crud->set_subject('Entradas al Stock');
 			$crud->set_theme('flexigrid');
 			$crud->set_table('entradas');
-			$crud->set_relation('id_productos', 'productos', '{descripcion} :: {detalle} :: {codigo}');
-			$crud->set_relation('id_tipodocumento', 'tipodocumentos', 'nombre');
-			$fields = array('id_productos','id_tipodocumento','nro_tipodocumento','precio', 'cantidad', 'observaciones');
+			$fields = array('fecha_created', 'id_productos','id_tipodocumento','nro_tipodocumento','precio', 'cantidad', 'observaciones');
 			$crud->columns($fields);
+			// RELACIONES
+			if ($this->last_uri == 'add') {
+				$crud->set_relation('id_productos', 'productos', '{descripcion} :: {detalle} :: {codigo}');
+			} else {
+				$crud->set_relation('id_productos', 'productos', '{descripcion} - {detalle}');
+			}
+			$crud->set_relation('id_tipodocumento', 'tipodocumentos', 'nombre');
+			// ADD
 			$crud->add_fields($fields);
+    			// EDIT
     			$crud->edit_fields($fields);
-			$crud->display_as('id_productos','Producto')
+    			$crud->unset_edit();
+    			$crud->unset_delete();
+			$crud->display_as('fecha_created','Fecha')
+					->display_as('id_productos','Producto')
 	             		->display_as('id_tipodocumento','Tipo de Documento')
 					->display_as('nro_tipodocumento','Número del documento')
 					->display_as('precio','Precio')
 					->display_as('cantidad','Cantidad')
 					->display_as('observaciones','Observaciones');
 			$crud->field_type( 'observaciones' , 'text' );
-			$crud->required_fields('id_productos','id_tipodocumento','nro_tipodocumento','precio', 'cantidad');
+			$crud->required_fields('fecha_created', 'id_productos','id_tipodocumento','nro_tipodocumento','precio', 'cantidad');
 			$crud->unset_texteditor('observaciones');
 			$crud->unset_export();
 			$crud->unset_print();
