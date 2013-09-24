@@ -1,6 +1,6 @@
 
 
-<a href="#">
+<a href="javascript:history.back()">
 	<img class="back" src="<?php echo ASSETS . 'frontend/images/productos/back.jpg'; ?>"alt="volver atras" title="Volver atrás" width="40" height="40" />
 </a>
 

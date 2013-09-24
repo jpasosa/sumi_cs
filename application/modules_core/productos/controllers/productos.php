@@ -407,6 +407,7 @@ class Productos extends MX_Controller {
 			$data['show_add']		= true;
 			$data['show_list']		= true;
 			$data['css_includes']	= $this->css_includes;
+			$data['no_edit']			= true;
 			// LEVANTO VISTAS
 			$this->load->view('templates/heads', $data);
 			$this->load->view('templates/header', $data);

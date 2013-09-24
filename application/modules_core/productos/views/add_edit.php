@@ -25,6 +25,7 @@
 	<?php endif; ?>
 
 
+
 	<?php if ($section == 'productos.editar'): ?>
 		<div class="alert alert-notice fade in add_edit_product" >
 			<a class="close" data-dismiss="alert" href="#">&times;</a>

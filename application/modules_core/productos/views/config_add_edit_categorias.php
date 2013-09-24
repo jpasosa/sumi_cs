@@ -24,12 +24,19 @@
 				<?php echo $message_notice; ?>
 			</div>
 		<?php endif; ?>
+		<?php if ($section == 'productos.editar_categoria'): ?>
+			<div class="alert alert-notice fade in add_edit_product" >
+				<a class="close" data-dismiss="alert" href="#">&times;</a>
+				<?php echo 'No es posible modificar el código por el momento.'; ?>
+			</div>
+		<?php endif; ?>
 		<form class="add_edit_category" action="<?php echo $form_action; ?>" method="post" enctype="multipart/form-data" >
 			<div class="title"><?php echo $box_title; ?></div>
 			<!-- CODIGO DEL ARTICULO-->
 			<div class="codigo_abrev">
 				<label>Código Abrevación:</label>
-				<input type="text" name="codigo_abrev" value="<?php if($categoria['codigo_abrev'] != ''): echo $categoria['codigo_abrev']; endif; ?>">
+				<input type="text" name="codigo_abrev" <?php if (isset($no_edit) && $no_edit): echo 'readonly="readonly" '; endif; ?>
+					value="<?php if($categoria['codigo_abrev'] != ''): echo $categoria['codigo_abrev']; endif; ?>">
 			</div>
 			<!-- DESCRIPCION -->
 			<div class="nombre">
