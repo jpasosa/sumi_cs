@@ -20,3 +20,21 @@
     margin:20px 0 0 0;
     width: 100%;
 }
+
+/*-------------------------------------*/
+/*arreglos del grocery_crud*/
+/*-------------------------------------*/
+
+
+input#field-nro_tipodocumento,
+input#field-precio,
+input#field-cantidad,
+input#field-fecha_created {
+    height: 25px;
+}
+
+
+
+
+
+
