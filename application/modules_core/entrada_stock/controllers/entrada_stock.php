@@ -16,6 +16,10 @@ class Entrada_stock extends MX_Controller {
 		$this->data['view_menu_izq']	= 'entrada_stock/menu_izq';
 		$this->css_includes				= array('frontend/css/entrada_stock.css');
 		$this->data['title_section']		= 'INGRESOS AL STOCK';
+		$this->data['id_menu_left'] 		= 'menu_entradas';
+		$this->data['title']				= 'CS :: Entradas';
+		$this->data['id_content']		= 'entrada_stock';
+
 	}
 
 
@@ -38,8 +42,6 @@ class Entrada_stock extends MX_Controller {
 
 			$error_message		= array();
 			$data['error_message'] 	= $error_message;
-			$data['title']				= 'Control Stock';
-			$data['id_content']		= 'entrada_stock';
 			$data['view_template']	= 'entrada_stock/agregar_productos';
 
 
@@ -122,10 +124,101 @@ class Entrada_stock extends MX_Controller {
 	}
 
 
-	// function _example_output($output = null)
- //    	{
-	// 	$this->load->view('agregar_productos.php',$output);
- //    	}
+	// CONFIGURACION :: MENU PRINCIPAL
+	public function config()
+	{
+		try {
+			$data 					= $this->data;
+			$data['section'] 			= $this->section; // en donde estamos
+
+			$error_message		= array();
+			$data['error_message'] 	= $error_message;
+
+			// DATOS DE VISTAS
+
+
+			$data['view_template']	= 'entrada_stock/config';
+			$data['show_add']		= true;
+			$data['show_list']		= true;
+			$data['configure_link']	= true;
+			$data['css_includes']	= $this->css_includes;
+			$data['id_content']		= 'entradas_configuracion';
+			// LEVANTO VISTAS
+			$this->load->view('templates/heads', $data);
+			$this->load->view('templates/header', $data);
+			$this->load->view('templates/content', $data);
+			$this->load->view('templates/footer', $data);
+
+		} catch (Exception $e) {
+			throw new Exception($e->getMessage());
+		}
+
+	}
+
+
+	// AGREGAR UNA CATEGORIA
+	public function config_tipo_alta()
+	{
+		try {
+			$data 					= $this->data;
+			$data['section'] 			= $this->section; // en donde estamos
+			$error_message		= array();
+			$data['error_message'] 	= $error_message;
+
+			$data['form_action'] 	= site_url('entrada_stock/config_tipo_alta/');;
+
+
+
+
+
+			if($this->input->server('REQUEST_METHOD') == 'GET')
+			{ // START
+				$tipo = array('nombre' => '');
+
+			}else{ // GUARDAR, por post.
+				// NOMBRE DEL TIPO DE DOCUMENTO
+				if($this->input->get_post('nombre')) {
+					$tipo['nombre'] = trim($this->input->get_post('nombre'));
+				} else {
+					$tipo['nombre'] = '';
+				}
+
+				$error_message = $this->action_tipodocumentos->validateAdd($tipo);
+				if(!$error_message)
+				{  	// PASO LA VALIDACIÓN
+					$insert_tipo = $this->action_tipodocumentos->insert($tipo);
+					if($insert_tipo) {
+						$data['message_notice'] = 'Tipo de Documento insertada con éxito';
+					} else {
+						$data['message_error'] = 'No pudo ser insertado el Tipo de Documento en la Base de Datos';
+					}
+					//$categoria = $this->getDataEmptyForCategory();
+				}
+			}
+
+			// MENSAJES DE VALIDACIONES
+			$data['error_message']	= $error_message;
+			$data['tipo']				= $tipo;
+
+			// DATOS DE VISTAS
+			$data['title']				= 'Control Stock';
+			$data['id_menu_left'] 	= 'menu_entradas';
+			$data['box_title']		= 'ALTA DEL TIPO DE DOCUMENTO';
+			$data['view_template']	= 'entrada_stock/config_add_edit_tipodocumentos';
+			$data['show_add']		= true;
+			$data['show_list']		= true;
+			$data['css_includes']	= $this->css_includes;
+			$data['id_content']		= 'entradas_configuracion';
+			// LEVANTO VISTAS
+			$this->load->view('templates/heads', $data);
+			$this->load->view('templates/header', $data);
+			$this->load->view('templates/content', $data);
+			$this->load->view('templates/footer', $data);
+
+		} catch (Exception $e) {
+			throw new Exception($e->getMessage());
+		}
+	}
 
 
 
