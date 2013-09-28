@@ -14,7 +14,13 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://sumi_cs';
+if($_SERVER['REMOTE_ADDR'] == '127.0.0.1')
+{
+	$config['base_url']	= 'http://sumi_cs';
+} else {
+	$config['base_url']	= 'http://webalibre.com.ar/sumi_cs';
+}
+
 
 /*
 |--------------------------------------------------------------------------
