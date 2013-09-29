@@ -309,7 +309,7 @@ body * {
 
 .content .left {
   border-right: 1px dotted #DDDDDD;
-  /*float: left;*/
+  float: left;
   min-height: 330px;
   /*padding: 5px 0 0 0;*/
   width: 100%;
