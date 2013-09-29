@@ -48,13 +48,13 @@ if($_SERVER['REMOTE_ADDR'] == '127.0.0.1') { // LOCAL
 if($_SERVER['REMOTE_ADDR'] == '127.0.0.1') { // LOCAL
 	define('RAIZ', 'http://sumi_cs');
 }else { // DEMO
-	define('RAIZ', 'http://testing.zerodigital.com.ar');
+	define('RAIZ', 'http://webalibre.com.ar/sumi_cs');
 }
 
 
 
-define('ASSETS',	 '/web/assets/');
-define('GROCERY_ASSETS',	 '/assets/grocery_crud/');
+define('ASSETS',	 RAIZ . '/web/assets/');
+define('GROCERY_ASSETS',	 RAIZ . '/assets/grocery_crud/');
 
 
 /* End of file constants.php */
