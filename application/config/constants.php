@@ -40,7 +40,7 @@ define('FOPEN_READ_WRITE_CREATE_STRICT',		'x+b');
 if($_SERVER['REMOTE_ADDR'] == '127.0.0.1') { // LOCAL
 	$ruta = '/';
 }else { // DEMO
-	$ruta = 'http://webalibre.com.ar/sumi_cs';
+	$ruta = '/sumi_cs/';
 }
 define('RUTA', $ruta);
 
