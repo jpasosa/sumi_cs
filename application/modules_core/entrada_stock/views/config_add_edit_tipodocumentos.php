@@ -33,6 +33,7 @@
 		<form class="add_edit_category" action="<?php echo $form_action; ?>" method="post" enctype="multipart/form-data" >
 			<div class="title"><?php echo $box_title; ?></div>
 			<!-- NOMBRE DEL TIPO DE DOCUMENTO -->
+			<input name="id_tipodocumentos" type="hidden" value="<?php if (isset($tipo['id_tipodocumentos'])): echo $tipo['id_tipodocumentos']; endif; ?>">
 			<div class="nombre">
 				<label>Nombre:</label>
 				<input type="text" name="nombre" value="<?php if($tipo['nombre'] != ''): echo $tipo['nombre']; endif; ?>">

@@ -20,6 +20,25 @@ class Get_tipodocumentos extends CI_Model
 		}
 	}
 
+	public function getTipo($id_tipo)
+	{
+		try {
+			$sql = "SELECT * FROM tipodocumentos WHERE id_tipodocumentos = $id_tipo ";
+			$query = $this->db->query($sql);
+			$tipo = $query->result_array();
+
+			if (isset($tipo[0])) {
+				return $tipo[0];
+			} else {
+				return false;
+			}
+
+
+		} catch (Exception $e) {
+			return array();
+		}
+	}
+
 	// public function getById($id_product)
 	// {
 	// 	try {

@@ -14,7 +14,7 @@ class Action_tipodocumentos extends CI_Model
 	{
 		$errors = false;
 
-		if($tipo['nombre'] == '') {
+		if(isset($tipo['nombre']) && $tipo['nombre'] == '') {
 			$errors['nombre'] = 'El nombre es obligatorio';
 		}
 
@@ -59,24 +59,21 @@ class Action_tipodocumentos extends CI_Model
 
 	}
 
-	// public function update($category)
-	// {
-	// 	$category['codigo_abrev'] = strtoupper($category['codigo_abrev']);
+	public function update($tipo)
+	{
+
+		$this->db->where('id_tipodocumentos', $tipo['id_tipodocumentos']);
+		$this->db->update('tipodocumentos', $tipo);
+		$update = $this->db->affected_rows();
+
+		if($update == 1) {
+			return true;
+		}else {
+			return false;
+		}
 
 
-
-	// 	$this->db->where('id_categorias', $category['id_categorias']);
-	// 	$this->db->update('categorias', $category);
-	// 	$update = $this->db->affected_rows();
-
-	// 	if($update == 1) {
-	// 		return true;
-	// 	}else {
-	// 		return false;
-	// 	}
-
-
-	// }
+	}
 
 	// public function erase($id_category)
 	// {

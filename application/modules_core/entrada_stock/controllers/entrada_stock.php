@@ -33,7 +33,8 @@ class Entrada_stock extends MX_Controller {
 	}
 
 
-	public function nueva_entrada($params = null) {
+	public function nueva_entrada($params = null)
+	{
 		try {
 
 			$data 					= $this->data;
@@ -167,10 +168,6 @@ class Entrada_stock extends MX_Controller {
 
 			$data['form_action'] 	= site_url('entrada_stock/config_tipo_alta/');;
 
-
-
-
-
 			if($this->input->server('REQUEST_METHOD') == 'GET')
 			{ // START
 				$tipo = array('nombre' => '');
@@ -207,6 +204,7 @@ class Entrada_stock extends MX_Controller {
 			$data['view_template']	= 'entrada_stock/config_add_edit_tipodocumentos';
 			$data['show_add']		= true;
 			$data['show_list']		= true;
+			$data['configure_link']	= true;
 			$data['css_includes']	= $this->css_includes;
 			$data['id_content']		= 'entradas_configuracion';
 			// LEVANTO VISTAS
@@ -219,6 +217,117 @@ class Entrada_stock extends MX_Controller {
 			throw new Exception($e->getMessage());
 		}
 	}
+
+	// AGREGAR UNA CATEGORIA
+	public function config_tipo_editar($id_tipo)
+	{
+		try {
+			$data 					= $this->data;
+			$data['section'] 			= $this->section; // en donde estamos
+			$error_message		= array();
+			$data['error_message'] 	= $error_message;
+
+
+
+			if($this->input->server('REQUEST_METHOD') == 'GET')
+			{ // START
+				$tipo = $this->get_tipodocumentos->getTipo($id_tipo);
+
+			}else{ // POST
+				// NOMBRE DEL TIPO DE DOCUMENTO
+
+				if($this->input->get_post('nombre')) {
+					$tipo['nombre'] = trim($this->input->get_post('nombre'));
+				} else {
+					$tipo['nombre'] = '';
+				}
+				if($this->input->get_post('id_tipodocumentos')) {
+					$tipo['id_tipodocumentos'] = trim($this->input->get_post('id_tipodocumentos'));
+				}
+
+				$error_message = $this->action_tipodocumentos->validateAdd($tipo);
+				if(!$error_message)
+				{  	// PASO LA VALIDACIÓN
+					$update_tipo = $this->action_tipodocumentos->update($tipo);
+					if($update_tipo) {
+						$message = 'Tipo de Documento editado con éxito';
+						$this->session->set_flashdata('flash_notice', $message);
+						redirect('entrada_stock/config_listado_documentos');
+					} else {
+						$message = 'No pudo ser editado el Tipo de Documento en la Base de Datos';
+						$this->session->set_flashdata('flash_error', $message);
+						redirect('entrada_stock/config_listado_documentos');
+					}
+				}
+			}
+
+			// MENSAJES DE VALIDACIONES
+			$data['error_message']	= $error_message;
+			$data['tipo']				= $tipo;
+
+
+
+
+
+			// DATOS DE VISTAS
+			$data['form_action'] 	= site_url('entrada_stock/config_tipo_editar/' . $tipo['id_tipodocumentos']);
+			$data['title']				= 'Control Stock';
+			$data['id_menu_left'] 	= 'menu_entradas';
+			$data['box_title']		= 'ALTA DEL TIPO DE DOCUMENTO';
+			$data['view_template']	= 'entrada_stock/config_add_edit_tipodocumentos';
+			$data['show_add']		= true;
+			$data['show_list']		= true;
+			$data['configure_link']	= true;
+			$data['css_includes']	= $this->css_includes;
+			$data['id_content']		= 'entradas_configuracion';
+			// LEVANTO VISTAS
+			$this->load->view('templates/heads', $data);
+			$this->load->view('templates/header', $data);
+			$this->load->view('templates/content', $data);
+			$this->load->view('templates/footer', $data);
+
+		} catch (Exception $e) {
+			throw new Exception($e->getMessage());
+		}
+	}
+
+
+	// LISTADO DE TIPOS DE DOCUMENTOS
+	public function config_listado_documentos()
+	{
+		try {
+			$data 					= $this->data;
+			$data['section'] 			= $this->section; // en donde estamos
+
+			$error_message		= array();
+			$data['error_message'] 	= $error_message;
+
+			$tipos 				= $this->get_tipodocumentos->getAll();
+			$data['tipos']		= $tipos;
+
+			// DATOS DE VISTAS
+			$data['id_content']		= 'entradas_configuracion';
+			$data['id_menu_left'] 	= 'menu_entradas';
+			$data['title']				= 'Control Stock';
+			$data['view_template']	= 'entrada_stock/config_listado_documentos';
+			$data['css_includes']	= $this->css_includes;
+			$data['js_includes']		= array('frontend/js/del_tipo.js');
+			$data['show_add']		= true;
+			$data['show_list']		= true;
+			$data['configure_link']	= true;
+			// VISTAS
+			$this->load->view('templates/heads', $data);
+			$this->load->view('templates/header', $data);
+			$this->load->view('templates/content', $data);
+			$this->load->view('templates/footer', $data);
+
+		} catch (Exception $e) {
+			throw new Exception($e->getMessage());
+		}
+
+	}
+
+
 
 
 

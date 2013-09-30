@@ -12,7 +12,7 @@
 			<a  href="#" class="dropdown-toggle menu" data-toggle="dropdown">Tipos de Documentos ▼</a>
 			<ul class="dropdown-menu">
 				<li><a href="<?php echo site_url('entrada_stock/config_tipo_alta');?>">Dar de Alta</a></li>
-				<li><a href="<?php echo site_url('entrada_stock/config_tipo_lista');?>">Listar</a></li>
+				<li><a href="<?php echo site_url('entrada_stock/config_listado_documentos');?>">Listar</a></li>
 			</ul>
 		</li>
 	</ul>
