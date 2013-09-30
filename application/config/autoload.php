@@ -119,6 +119,7 @@ $autoload['model'] = array('all_models/action_productos',
 							'all_models/is_categorias',
 
 							'all_models/get_entradas',
+							'all_models/is_entradas',
 
 							'all_models/get_tipodocumentos',
 							'all_models/action_tipodocumentos'

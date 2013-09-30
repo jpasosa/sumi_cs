@@ -69,6 +69,39 @@ class All_models extends MX_Controller {
 		// $del_publicacion = $this->repo_trabajos->erase($id_publicacion);
 	}
 
+	// AJAX :: ELIMINAR UN TIPO DE DOCUMENTO
+	public function del_tipo()
+	{
+		if ($this->input->post('id_tipodocumentos'))
+		{
+			$id_tipodocumentos 	= $this->input->post('id_tipodocumentos');
+			$exist_tipo_in_entrada 	= $this->is_entradas->existTipoDocumento($id_tipodocumentos);
+
+			if ($exist_tipo_in_entrada) {
+				// NO SE PUEDE ELIMINAR YA ESTÁ INGRESADO AL STOCK ALGUN PRODUCTO CON ESTE TIPO DE DOCUMENTO
+				$message = 'No se pudo eliminar el Tipo de Documento, ya se encuentra relacionado en el ingreso del Stock..';
+				$this->session->set_flashdata('flash_error', $message);
+
+			} else { // PROCEDE A ELIMINAR
+				$del_tipo = $this->action_tipodocumentos->erase($id_tipodocumentos);
+				if($del_tipo) {
+					$message = 'Tipo de Documento eliminado correctamente.';
+					$this->session->set_flashdata('flash_notice', $message);
+				} else {
+					$message = 'No se pudo eliminar el producto, error inesperado.';
+					$this->session->set_flashdata('flash_error', $message);
+				}
+			}
+
+		} else { // ERROR, NO FUE TOMADO EL ID DE LA CATEGORÍÁ, NO SE PUEDE ELIMINAR
+			$message = 'No se pudo eliminar el producto, error inesperado.';
+			$this->session->set_flashdata('flash_error', $message);
+		}
+		// redirect('productos/listar');
+		// redirect('homepage');
+		// $del_publicacion = $this->repo_trabajos->erase($id_publicacion);
+	}
+
 
 }
 ?>

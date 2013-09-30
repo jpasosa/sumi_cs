@@ -47,6 +47,8 @@ class Get_entradas extends CI_Model
 
 
 
+
+
 }
 
 ?>

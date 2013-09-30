@@ -1,15 +1,15 @@
 $(document).ready(function() {
     //##### ELIMINAR PUBLICACION #########
-    $("body").on("click", ".del_category", function(delRef) {
+    $("body").on("click", ".del_tipo", function(delRef) {
         delRef.returnValue = false;
-        var id_categoria  = this.id;
+        var id_tipodocumentos  = this.id;
         if (confirm('Seguro de eliminarlo?')) {
                 jQuery.ajax({
                         type: "POST",
-                        url: RUTA + 'all_models/del_category/' + id_categoria,
+                        url: RUTA + 'all_models/del_tipo/' + id_tipodocumentos,
                         dataType: "text",
                         data: {
-                            id_categoria: id_categoria
+                            id_tipodocumentos: id_tipodocumentos
                         },
                         success:function(response, status, xhr){
                             location.reload();
