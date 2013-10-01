@@ -1,7 +1,7 @@
 
 
 <a href="javascript:history.back()">
-	<img class="back" src="<?php echo ASSETS . 'frontend/images/productos/back.jpg'; ?>"alt="volver atras" title="Volver atrás" width="50" height="50" />
+	<img class="back" src="<?php echo ASSETS . 'frontend/images/atras.png'; ?>"alt="volver atras" title="Volver atrás" width="50" height="50" />
 </a>
 
 <?php if ( isset($show_in) && $show_in): ?>
