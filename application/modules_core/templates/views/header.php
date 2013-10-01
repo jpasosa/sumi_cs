@@ -20,7 +20,7 @@
                         </div>
                         <ul class="menu_principal">
                             <li> <a href="<?php echo site_url('productos/add');?>">Alta de Productos </a></li>
-                            <li> <a href="#">Stock Actual </a></li>
+                            <li> <a href="<?php echo site_url('stock_actual/listar');?>">Stock Actual </a></li>
                             <li> <a href="<?php echo site_url('entrada_stock/nueva_entrada');?>">Entrada de Stock </a></li>
                             <li> <a href="#">Salida de Stock </a></li>
                             <li> <a href="#">Remitos </a></li>

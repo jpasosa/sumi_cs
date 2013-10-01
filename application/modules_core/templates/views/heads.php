@@ -10,8 +10,10 @@
 	<!-- FUENTE -->
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
 
-<!-- BOOTSTRAP -->
+	<!-- BOOTSTRAP -->
 	<link href="<?php echo ASSETS . 'bootstrap/dist/css/bootstrap.css'; ?>" rel="stylesheet" media="screen">
+	<!-- ICONOS DE BOOTSTRAP -->
+	<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
 
 	<!-- JQUERY -->
 	<script src="<?php echo GROCERY_ASSETS . 'js/jquery-1.10.2.min.js'; ?>"></script>

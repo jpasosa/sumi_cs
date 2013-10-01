@@ -59,6 +59,11 @@ $route['entrada_stock'] = "entrada_stock";
 $route['entrada_stock/(:any)'] = 'entrada_stock/$1';
 $route['entrada_stock/(:any)/(:any)'] = 'entrada_stock/$1/$2';
 
+# STOCK ACTUAL
+$route['stock_actual'] = "stock_actual";
+$route['stock_actual/(:any)'] = 'stock_actual/$1';
+$route['stock_actual/(:any)/(:any)'] = 'stock_actual/$1/$2';
+
 
 # MODELOS
 // $route['models'] = 'all_models';
