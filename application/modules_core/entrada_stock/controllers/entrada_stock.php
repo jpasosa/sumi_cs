@@ -46,9 +46,14 @@ class Entrada_stock extends MX_Controller {
 			$data['view_template']	= 'entrada_stock/agregar_productos';
 
 
+
 			// GROCERY CRUD
 			$this->load->library('grocery_CRUD');
 			$crud = new grocery_CRUD();
+
+			// LLAMO DESPUES DE HACER EL INSERT EN ENTRADAS
+			$crud->callback_after_insert(array($this, 'insert_trans_entradas'));
+
 			// TABLAS
 			$crud->set_subject('Entradas al Stock');
 			$crud->set_theme('flexigrid');
@@ -80,14 +85,18 @@ class Entrada_stock extends MX_Controller {
 			$crud->unset_texteditor('observaciones');
 			$crud->unset_export();
 			$crud->unset_print();
+
+
+
+
+
+
+
 			// CONFIGURACIONES
 			$crud->unset_jquery();
         		$data['output'] 		= $crud->render()->output;
         		$data['css_grocery'] = $crud->render()->css_files;
 			$data['js_grocery']	= $crud->render()->js_files;
-
-
-
 
 				// $this->_example_output($output);
 
@@ -122,6 +131,16 @@ class Entrada_stock extends MX_Controller {
 		} catch (Exception $e) {
 			throw new Exception($e->getMessage());
 		}
+	}
+
+	// CUANDO TERMINA DE INSERTAR EN ENTRADAS VIENE ACÁ
+	public function insert_trans_entradas($nueva_entrada, $id_entrada)
+	{
+		$id_trans 			= $this->action_trans->insertEntradas();
+		$update_entradas 	= $this->action_entradas->update($id_entrada, $id_trans);
+		$insert_stock_actual= $this->action_stockactual->insert($nueva_entrada, $id_trans);
+
+	    return true;
 	}
 
 

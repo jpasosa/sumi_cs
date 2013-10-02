@@ -209,8 +209,8 @@ body * {
 
 .out-container .header .bottom {
   background: none repeat scroll 0 0 #F5F5F5;
-  border-bottom: 1px solid #DDDDDD;
-  border-top: 1px solid #DDDDDD;
+  border-bottom: 1px solid #c3ecfb;
+  border-top: 1px solid #c3ecfb;
   min-height: 60px;
   width: 100%;
 }
