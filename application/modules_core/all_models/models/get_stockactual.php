@@ -12,9 +12,10 @@ class Get_stockactual extends CI_Model
 	{
 		try {
 			$sql = "SELECT *
-					FROM stock_actual AC
+					FROM stock_actual SA
 					INNER JOIN productos P
-						ON AC.id_productos=P.id_productos
+						ON SA.id_productos=P.id_productos
+					WHERE SA.activo = 1
 					";
 			$query = $this->db->query($sql);
 			return $query->result_array();
