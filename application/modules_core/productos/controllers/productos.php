@@ -8,6 +8,9 @@ class Productos extends MX_Controller {
 
 		$this->section = $this->router->fetch_class() . '.' . $this->router->fetch_method();
 
+		$last_uri		= $this->uri->total_segments();
+		$this->last_uri	= $this->uri->segment($last_uri);
+		$this->last_last_uri	= $this->uri->segment($last_uri - 1);
 		// DATA DE VISTAS
 		$this->data 					= array();
 		$this->data['configure_link']		= 'productos/configuracion';
@@ -37,7 +40,7 @@ class Productos extends MX_Controller {
 			$data['section'] 			= $this->section; // en donde estamos
 			$error_message		= array();
 			$data['error_message'] 	= $error_message;
-			$data['form_action'] 	= site_url('productos/add/');;
+			$data['form_action'] 	= site_url('productos/add/');
 			$data['categorys'] 		= $this->get_categorias->getAll();
 
 
@@ -99,12 +102,25 @@ class Productos extends MX_Controller {
 
 			$error_message		= array();
 			$data['error_message'] 	= $error_message;
+			$data['form_filter_action'] 	= site_url('productos/listar');
 
-			$data['form_action'] 	= site_url('productos/add/');;
+			if ($this->input->server('REQUEST_METHOD') == 'POST' && $this->input->post('id_categorias') != 0) {
+				$filter['category_filter'] 	= true;
+				$filter['category_id'] 		= $this->input->post('id_categorias');
+				$data['filter_category']	= $this->input->post('id_categorias');
+			} else { // viene por GET
+				$filter['category_filter'] 	= false;
+				$filter['category_id'] 		= 0;
+				$data['filter_category']	= 0;
+			}
+
+			// CATEGORIAS
+			$categorys 			= $this->get_categorias->getAll();
+			$data['categorys'] 	= $categorys;
 
 
 			// PRODUCTOS
-			$products 			= $this->get_productos->getAll();
+			$products 			= $this->repo_productos->getProductos( $filter );
 			$data['products']	= $products;
 
 			// DATOS DE VISTAS

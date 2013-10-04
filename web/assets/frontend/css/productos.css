@@ -240,6 +240,49 @@
 }
 
 
+/*filtros*/
+
+#listar_productos #right form  {
+    width: 100%;
+}
+
+#listar_productos #right form .categoria {
+    width: 100%;
+    height: 50px;
+    margin: 0 0 0 0;
+}
+
+#listar_productos #right form .categoria {
+    margin: 0;
+}
+
+
+
+#listar_productos #right form .categoria label {
+    float: left;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+
+#listar_productos #right form .categoria select {
+    border: 1px solid #8C8A8A;
+    color: #000000;
+    margin: 0 20px 0 20px;
+    width: 200px;
+    float: left;
+}
+
+#listar_productos #right form .categoria .paginador_productos {
+    float: right;
+    margin: 0 50px 0 0;
+}
+
+#listar_productos #right form .categoria .paginador_productos .pagination {
+    margin: 0;
+}
+
+
 
 
 

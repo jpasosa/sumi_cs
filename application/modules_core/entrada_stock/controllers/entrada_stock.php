@@ -11,6 +11,7 @@ class Entrada_stock extends MX_Controller {
 		$last_uri		= $this->uri->total_segments();
 		$this->last_uri	= $this->uri->segment($last_uri);
 
+
 		// DATOS DE VISTAS, EN TODO ENTRADA DE STOCK
 		$this->data 					= array();
 		$this->data['view_menu_izq']	= 'entrada_stock/menu_izq';

@@ -46,6 +46,36 @@
 		</div>
 	<?php endif; ?>
 
+	<form action="<?php echo $form_filter_action; ?>" method="post" enctype="multipart/form-data">
+		<div class="categoria"> <!-- CATEGORIA DEL ARTICULO -->
+			<label>Categoría:</label>
+			<select name="id_categorias">
+				<option value="0"> Listar Todas </option>
+				<?php foreach ($categorys AS $cat): ?>
+					<option value="<?php echo $cat['id_categorias']; ?>"
+						<?php if ($cat['id_categorias'] == $filter_category): echo " selected='selected' "; endif; ?> >
+						<?php echo $cat['nombre'] . ' (<span style="font-weight: bold;">' . $cat['codigo_abrev'] . '</span>)'; ?>
+					</option>
+				<?php endforeach ?>
+			</select>
+			<button class="btn-xs" type="submit">
+				OK
+			</button>
+			<div class="paginador_productos">
+				<ul class="pagination">
+				      <li> <a href="#"> <<< </a> </li>
+			  		<li> <a href="#"> 1 </a> </li>
+			  		<li> <a href="#"> 2 </a> </li>
+			  		<li> <a href="#"> 3 </a> </li>
+			  		<li> <a href="#"> >>> </a> </li>
+				</ul>
+			</div>
+		</div>
+
+	</form>
+
+
+
 	<table class="table  table-condensed">
 		<tr>
 			<th><strong>CODIGO</strong></th>
@@ -86,6 +116,8 @@
 			</tr>
 		<?php endforeach ?>
 	</table>
+
+
 
 </div>
 
