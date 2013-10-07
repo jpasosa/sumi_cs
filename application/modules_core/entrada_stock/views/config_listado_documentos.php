@@ -37,10 +37,10 @@
 					</td>
 					<td  class="actions">
 						<a href="<?php echo site_url('entrada_stock/config_tipo_editar/' . $tipo['id_tipodocumentos']);?>">
-							<img class="edit" src="<?php echo ASSETS . 'frontend/images/icons/edit_30.png'; ?>" alt="editar" title="Editar" width="20" height="20" />
+							<img class="edit" src="<?php echo ASSETS . 'frontend/images/icons/actions/edit.png'; ?>" alt="editar" title="Editar" width="25" height="25" />
 						</a>
 						<a href="#">
-							<img class="del del_tipo" id="<?php echo $tipo['id_tipodocumentos']; ?>" src="<?php echo ASSETS . 'frontend/images/icons/del_30.png'; ?>" alt="eliminar" title="Borrar" width="20" height="20" />
+							<img class="del del_tipo" id="<?php echo $tipo['id_tipodocumentos']; ?>" src="<?php echo ASSETS . 'frontend/images/icons/actions/delete.png'; ?>" alt="eliminar" title="Borrar" width="25" height="25" />
 						</a>
 					</td>
 				</tr>

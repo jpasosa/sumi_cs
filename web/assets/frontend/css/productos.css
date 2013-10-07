@@ -3,7 +3,7 @@
 }
 
 .left#menu_productos a {
-    margin: 20px auto 20px auto;
+    margin: 15px 0 15px 0;
     float: left;
 }
 
@@ -14,7 +14,7 @@
 }
 
 .left#menu_productos a img {
-    margin: 0 0 0 20px;
+    margin: 0 0 0 0;
 }
 
 .inner-content.new_article {
@@ -211,7 +211,7 @@
 
 
 #listar_productos table tr:hover {
-    background-color: #ef9e9e;
+    background-color: #d9ebf5;
 }
 
 #listar_productos table tr th {

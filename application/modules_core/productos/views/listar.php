@@ -104,13 +104,13 @@
 				</td>
 				<td  class="actions">
 					<a href="<?php echo site_url('productos/ver/' . $pr['id_productos']);?>">
-						<img class="view" src="<?php echo ASSETS . 'frontend/images/icons/view_30.png'; ?>" alt="ver" title="Ver" width="20" height="20" />
+						<img class="view" src="<?php echo ASSETS . 'frontend/images/icons/actions/view.png'; ?>" alt="ver" title="Ver" width="25" height="25" />
 					</a>
 					<a href="<?php echo site_url('productos/editar/' . $pr['id_productos']);?>">
-						<img class="edit" src="<?php echo ASSETS . 'frontend/images/icons/edit_30.png'; ?>" alt="editar" title="Editar" width="20" height="20" />
+						<img class="edit" src="<?php echo ASSETS . 'frontend/images/icons/actions/edit.png'; ?>" alt="editar" title="Editar" width="25" height="25" />
 					</a>
 					<a href="#">
-						<img class="del del_product" id="<?php echo $pr['id_productos']; ?>" src="<?php echo ASSETS . 'frontend/images/icons/del_30.png'; ?>" alt="eliminar" title="Borrar" width="20" height="20" />
+						<img class="del del_product" id="<?php echo $pr['id_productos']; ?>" src="<?php echo ASSETS . 'frontend/images/icons/actions/delete.png'; ?>" alt="eliminar" title="Borrar" width="25" height="25" />
 					</a>
 				</td>
 			</tr>
