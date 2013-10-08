@@ -114,9 +114,14 @@ class Entrada_stock extends MX_Controller {
 
 
 			// DATOS DE VISTAS
-			$data['show_add']		= true;
+			if ($this->last_uri == 'add') { // ESTÁ AGREGANDO UN PRODUCTO AL STOCK
+				$data['show_add']		= false;
+				$data['show_list'] 		= true;
+			} else { // LISTANDO LAS ENTRADAS DEL STOCK
+				$data['show_add']		= true;
+				$data['show_list'] 		= false;
+			}
 			$data['configure_link'] 	= true;
-			$data['show_list'] 		= true;
 			$data['css_includes']	= $this->css_includes;
 			// VISTAS
 			$this->load->view('templates/heads', $data);

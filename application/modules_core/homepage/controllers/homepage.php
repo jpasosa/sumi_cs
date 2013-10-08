@@ -20,9 +20,10 @@ class Homepage extends MX_Controller
 	{
 		$data					= $this->data;
 		$data['section'] 			= $this->section;
-		$data['id_menu_left'] 	= '';
+		$data['id_menu_left'] 	= 'menu_home';
 		$data['id_content']		= 'homepage';
 		$data['view_template']	= 'homepage/homepage';
+		$data['css_includes']	= $this->css_includes;
 
 		// VISTAS
 		$this->load->view('templates/heads', $data);
