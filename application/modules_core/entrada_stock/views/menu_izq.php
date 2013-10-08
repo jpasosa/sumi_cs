@@ -18,7 +18,7 @@
 
 <?php if (isset($configure_link) && $configure_link): ?>
 	<a href="<?php echo site_url('entrada_stock/config');?>">
-		<img class="back" src="<?php echo ASSETS . 'frontend/images/icons/tools.png'; ?>" alt="configurar"
+		<img class="back" src="<?php echo ASSETS . 'frontend/images/icons/configure.png'; ?>" alt="configurar"
 			title="Configuraciones de Entradas de Stock" width="85" height="85" />
 	</a>
 <?php endif; ?>

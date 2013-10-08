@@ -18,7 +18,7 @@
 
 <?php if (isset($configure_link)): ?>
 	<a href="<?php echo site_url($configure_link);?>">
-		<img class="back" src="<?php echo ASSETS . 'frontend/images/icons/tools.png'; ?>" alt="configurar" title="<?php echo $configure_link_title ?>" width="85" height="85" />
+		<img class="back" src="<?php echo ASSETS . 'frontend/images/icons/configure.png'; ?>" alt="configurar" title="<?php echo $configure_link_title ?>" width="85" height="85" />
 	</a>
 <?php endif ?>
 

@@ -17,6 +17,6 @@
 <?php endif; ?>
 
 <a href="#">
-	<img class="list" src="<?php echo ASSETS . 'frontend/images/icons/tools.png'; ?>" alt="listar" title="Dar una Salida del Stock" width="85" height="85" />
+	<img class="list" src="<?php echo ASSETS . 'frontend/images/icons/configure.png'; ?>" alt="listar" title="Dar una Salida del Stock" width="85" height="85" />
 </a>
 
