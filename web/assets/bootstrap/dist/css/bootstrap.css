@@ -4989,8 +4989,8 @@ a.thumbnail:focus {
 }
 
 .alert {
-  padding: 15px;
-  margin-bottom: 20px;
+  padding: 10px;
+  margin: 10px 0 10px 0;
   border: 1px solid transparent;
   border-radius: 4px;
 }
@@ -5049,6 +5049,7 @@ a.thumbnail:focus {
   color: #1c50e3;
   background-color: #91aaf1;
   border-color: #1c50e3;
+  height: 40px;
 }
 
 .alert-error hr {
