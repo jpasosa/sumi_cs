@@ -70,6 +70,8 @@
 		<?php endforeach; ?>
 	<?php endif; ?>
 
+	<!-- GENERAL -->
+	<script src="<?php echo ASSETS . 'frontend/js/general.js'; ?>"></script>
 
 
 	<!-- ICO -->
