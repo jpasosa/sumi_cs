@@ -4,6 +4,10 @@
     float: left;
     text-align: center;
 }
+.left#menu_entradas a img:hover {
+    background-image: url(../images/icons/add_hover.png);
+    background-repeat: no-repeat;
+}
 
 
 
