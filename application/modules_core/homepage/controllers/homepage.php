@@ -1,6 +1,6 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Homepage extends MX_Controller
+class Homepage extends MY_Codeigniter
 {
 
 

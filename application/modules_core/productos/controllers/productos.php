@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Productos extends MX_Controller {
+class Productos extends MY_Codeigniter {
 
 
 	public function __construct(){

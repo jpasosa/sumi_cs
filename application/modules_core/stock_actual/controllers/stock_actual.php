@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Stock_actual extends MX_Controller {
+class Stock_actual extends MY_Codeigniter {
 
 
 	public function __construct(){

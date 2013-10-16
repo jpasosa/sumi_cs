@@ -1,23 +1,21 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class All_models extends MX_Controller {
-
+class All_models extends MY_Codeigniter
+{
 
 	public function __construct(){
 		parent::__construct();
 		$this->section = $this->router->fetch_class() . '.' . $this->router->fetch_method();
 	}
 
-
-
-	public function index() {
+	public function index()
+	{
 		try {
 
 		} catch (Exception $e) {
 			throw new Exception($e->getMessage());
 		}
 	}
-
 
 	// AJAX :: ELIMINAR UNA CATEGORÍA
 	public function del_category()
