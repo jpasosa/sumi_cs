@@ -34,7 +34,7 @@
                     <h1> Control de Stock   &nbsp;&nbsp;&nbsp;<span style="color: #D82133;">[ <?php echo $title_section; ?> ]</span> </h1>
                     <div class="login">
                         <!-- <h3> Ingresar al </h3> -->
-                        <a href="" > I N G R E S A R </a>
+                        <a href="<?php echo site_url('login');?>" > I N G R E S A R </a>
                     </div>
                 </div>
             </div>
