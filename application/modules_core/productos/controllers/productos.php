@@ -3,7 +3,8 @@
 class Productos extends MY_Codeigniter {
 
 
-	public function __construct(){
+	public function __construct()
+	{
 		parent::__construct();
 
 		$this->section = $this->router->fetch_class() . '.' . $this->router->fetch_method();
@@ -24,7 +25,8 @@ class Productos extends MY_Codeigniter {
 
 
 
-	public function index() {
+	public function index()
+	{
 		try {
 
 		} catch (Exception $e) {
@@ -78,6 +80,7 @@ class Productos extends MY_Codeigniter {
 			$data['view_template']	= 'productos/add_edit';
 			$data['show_list']		= true;
 			$data['css_includes']	= $this->css_includes;
+
 			// LEVANTO VISTAS
 			$this->load->view('templates/heads', $data);
 			$this->load->view('templates/header', $data);
@@ -94,7 +97,8 @@ class Productos extends MY_Codeigniter {
 
 
 	// LISTAR LOSPRODUCTOS
-	public function listar()
+	// $page => 'page/'   $number_page -> numero de primer fila que muestra del pagindor
+	public function listar( $page = null, $number_page = null )
 	{
 		try {
 			$data 					= $this->data;
@@ -102,17 +106,70 @@ class Productos extends MY_Codeigniter {
 
 			$error_message		= array();
 			$data['error_message'] 	= $error_message;
-			$data['form_filter_action'] 	= site_url('productos/listar');
+			//$data['form_filter_action'] 	= site_url('productos/listar');
 
-			if ($this->input->server('REQUEST_METHOD') == 'POST' && $this->input->post('id_categorias') != 0) {
+			$filter 		= array();
+			$per_page 	= $this->config->item('pag_productos');
+
+
+			if ($this->uri->segment(3) == 'cat' && $this->uri->segment(4) > 0)
+			{ 	// FILTRADO
 				$filter['category_filter'] 	= true;
-				$filter['category_id'] 		= $this->input->post('id_categorias');
-				$data['filter_category']	= $this->input->post('id_categorias');
-			} else { // viene por GET
+				$filter['category_id'] 		= $this->uri->segment(4);
+				$data['filter_category']	= $this->uri->segment(4);
+				$base 					= 'http://sumi_cs/productos/listar/cat/' .$filter['category_id'] . '/page';
+				$total_rows 			= $this->action_productos->countAllByCategory($filter['category_id']);
+				$uri_segment 			= 6;
+			}
+
+			else
+			{ // SIN FILTROS
 				$filter['category_filter'] 	= false;
 				$filter['category_id'] 		= 0;
 				$data['filter_category']	= 0;
+				$base 					= 'http://sumi_cs/productos/listar/page';
+				$total_rows 			= $this->action_productos->countAll();
+				$uri_segment 			= 4;
+
 			}
+			// PARA EL PAGINADOR
+			if($this->last_last_uri == 'page') {
+				$filter['limit'] = 'LIMIT ' . $this->last_uri . ', ' . ( $per_page );
+			} else {
+				$filter['limit'] = 'LIMIT 0, ' . ( $per_page );
+			}
+
+
+			// PAGINADOR  TODO: PONER EN UN ARCHIVO DE CONFIGURACIÓN
+			$this->load->library('pagination');
+			$config['base_url'] 		= $base;
+			$config['total_rows'] 	= $total_rows;
+			$config['per_page'] 		= $per_page;
+			$config["uri_segment"] 	= $uri_segment;
+			$config['num_links'] 		= 5;
+			$config['full_tag_open'] 	= '<ul class="pagination">';
+			$config['full_tag_close'] 	= '</ul>';
+			$config['first_link'] 		= 'Primera';
+			$config['first_tag_open'] = '<li>';
+			$config['first_tag_close'] = '</li>';
+			$config['last_link'] 		= 'Ultima';
+			$config['last_tag_open'] 	= '<li>';
+			$config['last_tag_close'] = '</li>';
+			$config['next_link'] 		= '>>';
+			$config['next_tag_open']= '<li>';
+			$config['next_tag_close']= '</li>';
+			$config['prev_link'] 		= '<<';
+			$config['prev_tag_open']= '<li>';
+			$config['prev_tag_close']= '</li>';
+			$config['cur_tag_open'] 	= '<li class="active"><a href="">';
+			$config['cur_tag_close'] 	= '</a></li>';
+			$config['num_tag_open']= '<li>';
+			$config['num_tag_close']= '</li>';
+			$this->pagination->initialize($config);
+			$data['paginador'] = $this->pagination->create_links();
+
+
+
 
 			// CATEGORIAS
 			$categorys 			= $this->get_categorias->getAll();
@@ -130,7 +187,7 @@ class Productos extends MY_Codeigniter {
 			$data['view_template']	= 'productos/listar';
 			$data['show_add']		= true;
 			$data['css_includes']	= $this->css_includes;
-			$data['js_includes']		= array('frontend/js/del_product.js');
+			$data['js_includes']		= array('frontend/js/del_product.js', '/frontend/js/product_filter_categorys.js');
 			// LEVANTO VISTAS
 			$this->load->view('templates/heads', $data);
 			$this->load->view('templates/header', $data);

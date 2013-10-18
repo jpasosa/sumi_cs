@@ -46,10 +46,10 @@
 		</div>
 	<?php endif; ?>
 
-	<form action="<?php echo $form_filter_action; ?>" method="post" enctype="multipart/form-data">
+	<form action="#" method="post" enctype="multipart/form-data">
 		<div class="categoria"> <!-- CATEGORIA DEL ARTICULO -->
 			<label>Categoría:</label>
-			<select name="id_categorias">
+			<select name="id_categorias" id="filter">
 				<option value="0"> Listar Todas </option>
 				<?php foreach ($categorys AS $cat): ?>
 					<option value="<?php echo $cat['id_categorias']; ?>"
@@ -58,10 +58,14 @@
 					</option>
 				<?php endforeach ?>
 			</select>
-			<button class="btn-xs" type="submit">
+			<button id="btn-filter" class="btn-xs" type="button">
 				OK
 			</button>
 			<div class="paginador_productos">
+				<?php echo $paginador; ?>
+			</div>
+
+			<!--
 				<ul class="pagination">
 				      <li> <a href="#"> <<< </a> </li>
 			  		<li class="active"> <a href="#"> 1 </a> </li>
@@ -69,7 +73,7 @@
 			  		<li> <a href="#"> 3 </a> </li>
 			  		<li> <a href="#"> >>> </a> </li>
 				</ul>
-			</div>
+			</div> -->
 		</div>
 
 	</form>

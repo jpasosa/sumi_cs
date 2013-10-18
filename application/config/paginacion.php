@@ -2,7 +2,7 @@
 
 
 # PAGINADO EN LA LISTA DE LOS PRODUCTOS
-$config['pag_productos'] = 5;
+$config['pag_productos'] = 3;
 
 
 ?>

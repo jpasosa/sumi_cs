@@ -99,6 +99,52 @@ class Action_productos extends CI_Model
 		return false;
 	}
 
+	public function countAll()
+	{
+		try
+		{
+			$sql = 'SELECT COUNT(P.id_productos) as "max"
+			FROM productos P
+			';
+
+			$query = $this->db->query($sql);
+			$rows = $query->row_array();
+			if($rows['max'] <= 0 ){
+				return 0;
+			}
+			else{
+				return $rows['max'];
+			}
+
+		} catch (Exception $e) {
+			throw new Exception($e->getMessage());
+			return 0;
+		}
+	}
+
+	public function countAllByCategory($id_category)
+	{
+		try
+		{
+			$sql = "SELECT COUNT(P.id_productos) as max
+					FROM productos P
+					WHERE id_categorias = $id_category";
+
+			$query = $this->db->query($sql);
+			$rows = $query->row_array();
+			if($rows['max'] <= 0 ){
+				return 0;
+			}
+			else{
+				return $rows['max'];
+			}
+
+		} catch (Exception $e) {
+			throw new Exception($e->getMessage());
+			return 0;
+		}
+	}
+
 
 	// VALIDA EL CAMPO CODIGO
 	// private function validateCodigo($code) {
