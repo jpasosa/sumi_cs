@@ -101,5 +101,42 @@ class All_models extends MY_Codeigniter
 	}
 
 
+	// PARA CREAR LOS USUARIOS MANUALMENTE.
+	public function create_user( $email, $pass, $role)
+	{
+		try
+		{
+			// SOLAMENTE LOCALMENTE PODEMOS CREAR USUARIOS MANUALMENTE
+			if($_SERVER['REMOTE_ADDR'] != '127.0.0.1')
+			{
+				echo 'SOLAMENTE ADMINISTRADOR PUEDE CREAR LOS USUARIOS.<br />';
+				echo 'Comunicarse con el administrador del Sistema.<br >';
+				exit();
+			}
+
+			// CREACIÓN DEL USUARIO
+			$insert_user = $this->db->insert('usuarios', array('email' => $email, 'id_rol' => $role));
+			if($insert_user) {
+				$insert_id 		= $this->db->insert_id();
+				$clave 			= $pass;
+				$sql 			= "UPDATE usuarios SET clave = PASSWORD('$clave') WHERE  id_usuario=$insert_id";
+				$query 			= $this->db->query($sql);
+				$user_update 	= $this->db->affected_rows();
+			}
+			if($user_update == 1) {
+				echo 'Usuario creado correctamente';
+			}else {
+				echo 'No pudo crear el Usuario.';
+			}
+
+			exit();
+
+		} catch (Exception $e) {
+				return false;
+		}
+
+	}
+
+
 }
 ?>
