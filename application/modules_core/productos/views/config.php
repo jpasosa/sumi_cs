@@ -18,7 +18,7 @@
 		<li class="dropdown">
 			<a href="#" class="dropdown-toggle menu" data-toggle="dropdown">Paginador ▼</a>
 			<ul class="dropdown-menu">
-				<li><a href="#">Definir Páginas</a></li>
+				<li><a href="<?php echo site_url('productos/config_paginador');?>">Definir Páginas</a></li>
 
 			</ul>
 		</li>

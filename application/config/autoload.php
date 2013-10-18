@@ -79,7 +79,7 @@ $autoload['helper'] = array('url');
 |
 */
 
-$autoload['config'] = array('paginacion');
+$autoload['config'] = array('pag_productos');
 
 
 /*

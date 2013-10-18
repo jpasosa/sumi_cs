@@ -396,3 +396,52 @@
 
 
 
+
+
+
+/*CONFIGURACION DE LA PAGINACION DE LOS PRODUCTOS*/
+
+#productos_configuracion #right .config_page {
+    width: 420px;
+    /*margin: 10px 0 30px 0;*/
+    background-color: #F5F5F5;
+    height: 120px;
+    border: 1px solid #DDDDDD;
+}
+
+#productos_configuracion #right .config_page {
+    width: 420px;
+    /*margin: 10px 0 30px 0;*/
+    background-color: #F5F5F5;
+    height: 120px;
+    border: 1px solid #DDDDDD;
+}
+
+#productos_configuracion #right .config_page .title {
+    width: 100%;
+    background-color: #DDDDDD;
+    /*height: 40px;*/
+    text-align: center;
+    margin: 0;
+}
+
+#productos_configuracion #right .config_page .cant_items {
+    margin: 10px 0 10px 20px;
+}
+#productos_configuracion #right .config_page .cant_items label {
+    font-size: 14px;
+    text-transform: uppercase;
+}
+#productos_configuracion #right .config_page .cant_items input {
+    margin: 0 0 0 87px;
+    border: 1px solid #8C8A8A;
+    width: 100px;
+
+}
+
+/*boton agregar*/
+#productos_configuracion #right .config_page .agregar {
+    margin: 0 60px 0 0;
+    float: right;
+}
+

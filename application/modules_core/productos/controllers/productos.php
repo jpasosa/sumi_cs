@@ -146,7 +146,7 @@ class Productos extends MY_Codeigniter {
 			$config['total_rows'] 	= $total_rows;
 			$config['per_page'] 		= $per_page;
 			$config["uri_segment"] 	= $uri_segment;
-			$config['num_links'] 		= 5;
+			$config['num_links'] 		= 10;
 			$config['full_tag_open'] 	= '<ul class="pagination">';
 			$config['full_tag_close'] 	= '</ul>';
 			$config['first_link'] 		= 'Primera';
@@ -366,6 +366,7 @@ class Productos extends MY_Codeigniter {
 	}
 
 
+
 	// AGREGAR UNA CATEGORIA
 	public function add_categoria()
 	{
@@ -409,6 +410,55 @@ class Productos extends MY_Codeigniter {
 			$data['id_menu_left'] 	= 'menu_productos';
 			$data['box_title']		= 'ALTA DE LA CATEGORÍA';
 			$data['view_template']	= 'productos/config_add_edit_categorias';
+			$data['show_add']		= true;
+			$data['show_list']		= true;
+			$data['css_includes']	= $this->css_includes;
+			// LEVANTO VISTAS
+			$this->load->view('templates/heads', $data);
+			$this->load->view('templates/header', $data);
+			$this->load->view('templates/content', $data);
+			$this->load->view('templates/footer', $data);
+
+		} catch (Exception $e) {
+			throw new Exception($e->getMessage());
+		}
+	}
+
+	// AGREGAR UNA CATEGORIA
+	public function config_paginador()
+	{
+		try {
+			$data 					= $this->data;
+			$data['section'] 			= $this->section; // en donde estamos
+			// $error_message		= array();
+			// $data['error_message'] 	= $error_message;
+
+			$data['form_action'] 	= site_url('productos/config_paginador/');;
+
+			if ($this->input->server('REQUEST_METHOD') == 'POST')
+			{
+				$cant_items = (int)$this->input->post('cant_items');
+
+				$content = '<?php if ( ! defined("BASEPATH")) exit("No direct script access allowed");
+							$config["pag_productos"] = ' . $cant_items . ';
+							?>';
+				file_put_contents("application/config/pag_productos.php", $content);
+
+				$data['cant_items']	= $cant_items;
+			} else {
+				$cant_items 		= (int)$this->config->item('pag_productos');
+				$data['cant_items'] 	= $cant_items;
+			}
+			// // MENSAJES DE VALIDACIONES
+			// $data['error_message']		= $error_message;
+			// $data['categoria']			= $categoria;
+
+			// DATOS DE VISTAS
+			$data['title']				= 'Control Stock';
+			$data['id_content']		= 'productos_configuracion';
+			$data['id_menu_left'] 	= 'menu_productos';
+			$data['box_title']		= 'PAGINADOR';
+			$data['view_template']	= 'productos/config_paginador';
 			$data['show_add']		= true;
 			$data['show_list']		= true;
 			$data['css_includes']	= $this->css_includes;
