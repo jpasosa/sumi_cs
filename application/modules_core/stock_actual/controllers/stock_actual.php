@@ -6,10 +6,14 @@ class Stock_actual extends MY_Codeigniter {
 	public function __construct(){
 		parent::__construct();
 
+		if (!isLogged($this->session)) {
+			redirect('login');
+		}
+
 		$this->section = $this->router->fetch_class() . '.' . $this->router->fetch_method();
 
 		// DATA DE VISTAS
-		$this->data 					= array();
+		// $this->data 					= array();
 		$this->data['css_includes']		= array();
 		$this->data['js_includes']		= array();
 		$this->css_includes				= array('frontend/css/stock_actual.css');

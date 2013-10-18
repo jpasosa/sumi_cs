@@ -32,10 +32,15 @@
             <div class="bottom">
                 <div class="in">
                     <h1> Control de Stock   &nbsp;&nbsp;&nbsp;<span style="color: #D82133;">[ <?php echo $title_section; ?> ]</span> </h1>
-                    <div class="login">
-                        <!-- <h3> Ingresar al </h3> -->
-                        <a href="<?php echo site_url('login');?>" > I N G R E S A R </a>
-                    </div>
+                    <?php if (isset( $login ) && $login): ?>
+                        <div class="logout">
+                            <a href="<?php echo site_url('login/salir');?>" > S A L I R </a>
+                        </div>
+                    <?php else: ?>
+                        <div class="login">
+                            <a href="<?php echo site_url('login');?>" > I N G R E S A R </a>
+                        </div>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>

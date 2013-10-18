@@ -10,7 +10,7 @@ class Homepage extends MY_Codeigniter
 		//$this->output->enable_profiler(TRUE);
 		$this->section = $this->router->fetch_class() . '.' . $this->router->fetch_method();
 		$this->css_includes				= array('frontend/css/productos.css');
-		$this->data 					= array();
+		// $this->data 					= array();
 		$this->data['view_menu_izq']	= 'productos/menu_izq';
 		$this->data['title_section']		= 'HOME';
 

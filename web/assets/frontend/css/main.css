@@ -232,7 +232,8 @@ body * {
 
 }
 
-.out-container .header .bottom .in .login {
+.out-container .header .bottom .in .login,
+.out-container .header .bottom .in .logout {
   position: absolute;
   right: 0;
   text-align: center;
@@ -240,7 +241,9 @@ body * {
 
 }
 
-.out-container .header .bottom .in .login h3{
+.out-container .header .bottom .in .login h3,
+.out-container .header .bottom .in .logout h3,
+{
   font-weight: 300px;
 
 }
@@ -260,7 +263,24 @@ body * {
     text-decoration: none;
 }
 
-.out-container .header .bottom .in .login a:hover{
+.out-container .header .bottom .in .logout a{
+  background: none repeat scroll 0 0 #428BCA;
+    box-shadow: 0 1px 4px #A9A7A7;
+    color: #FFFFFF;
+    display: block;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 35px;
+    margin-top: 3px;
+    text-align: center;
+    text-transform: uppercase;
+    width: 150px;
+    text-decoration: none;
+}
+
+.out-container .header .bottom .in .login a:hover,
+.out-container .header .bottom .in .logout a:hover
+{
     text-decoration: underline;
 }
 

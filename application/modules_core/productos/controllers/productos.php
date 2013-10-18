@@ -13,7 +13,7 @@ class Productos extends MY_Codeigniter {
 		$this->last_uri	= $this->uri->segment($last_uri);
 		$this->last_last_uri	= $this->uri->segment($last_uri - 1);
 		// DATA DE VISTAS
-		$this->data 					= array();
+		// $this->data 					= array();
 		$this->data['configure_link']		= 'productos/configuracion';
 		$this->data['configure_link_title']	= 'Configuración de Productos';
 		$this->data['css_includes']		= array();
@@ -21,6 +21,10 @@ class Productos extends MY_Codeigniter {
 		$this->css_includes				= array('frontend/css/productos.css');
 		$this->data['view_menu_izq']	= 'productos/menu_izq';
 		$this->data['title_section']		= 'PRODUCTOS';
+
+		if (!isLogged($this->session)) {
+			redirect('login');
+		}
 	}
 
 

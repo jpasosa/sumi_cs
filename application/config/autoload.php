@@ -64,7 +64,7 @@ $autoload['libraries'] = array('database', 'session');
 |	$autoload['helper'] = array('url', 'file');
 */
 
-$autoload['helper'] = array('url');
+$autoload['helper'] = array('url', 'my_session_helper');
 
 /*
 | -------------------------------------------------------------------
@@ -128,7 +128,10 @@ $autoload['model'] = array('all_models/action_productos',
 							'all_models/action_trans',
 
 							'all_models/get_tipodocumentos',
-							'all_models/action_tipodocumentos'
+							'all_models/action_tipodocumentos',
+
+							'all_models/action_usuarios'
+
 
 							);
 

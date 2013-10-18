@@ -6,6 +6,10 @@ class Entrada_stock extends MY_Codeigniter {
 	public function __construct(){
 		parent::__construct();
 
+		if (!isLogged($this->session)) {
+			redirect('login');
+		}
+
 		$this->section = $this->router->fetch_class() . '.' . $this->router->fetch_method();
 
 		$last_uri		= $this->uri->total_segments();
@@ -13,7 +17,7 @@ class Entrada_stock extends MY_Codeigniter {
 
 
 		// DATOS DE VISTAS, EN TODO ENTRADA DE STOCK
-		$this->data 					= array();
+		// $this->data 					= array();
 		$this->data['view_menu_izq']	= 'entrada_stock/menu_izq';
 		$this->css_includes				= array('frontend/css/entrada_stock.css');
 		$this->data['title_section']		= 'INGRESOS AL STOCK';
