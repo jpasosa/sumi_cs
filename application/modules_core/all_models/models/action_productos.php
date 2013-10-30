@@ -55,9 +55,18 @@ class Action_productos extends CI_Model
 	public function insert($product)
 	{
 		$product['codigo'] = $this->putWellCodigo($product['id_categorias']);
+
 		$insert_prod = $this->db->insert('productos', $product);
-		if($insert_prod) {
-			return true;
+
+		if($insert_prod)
+		{
+			$id_productos = $this->db->insert_id();
+			$trans = $this->repo_trans->addTrans( $id_productos );
+			if ( $trans ) {
+				return true;
+			} else {
+				return false;
+			}
 		}else {
 			return false;
 		}

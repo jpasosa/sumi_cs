@@ -130,7 +130,9 @@ $autoload['model'] = array('all_models/action_productos',
 							'all_models/get_tipodocumentos',
 							'all_models/action_tipodocumentos',
 
-							'all_models/action_usuarios'
+							'all_models/action_usuarios',
+
+							'all_models/repo_trans'
 
 
 							);

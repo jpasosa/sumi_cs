@@ -42,6 +42,7 @@ class Productos extends MY_Codeigniter {
 	public function add()
 	{
 		try {
+
 			$data 					= $this->data;
 			$data['section'] 			= $this->section; // en donde estamos
 			$error_message		= array();
