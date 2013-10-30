@@ -54,8 +54,8 @@ class Action_productos extends CI_Model
 
 	public function insert($product)
 	{
-		$product['codigo'] = $this->putWellCodigo($product['id_categorias']);
-
+		$product['codigo'] 	= $this->putWellCodigo($product['id_categorias']);
+		$product['activo'] 	= 1;
 		$insert_prod = $this->db->insert('productos', $product);
 
 		if($insert_prod)
@@ -81,6 +81,14 @@ class Action_productos extends CI_Model
 		$this->db->update('productos', $product);
 		$update = $this->db->affected_rows();
 		if($update == 1) {
+			$trans = $this->repo_trans->addTrans( $product['id_productos'] );
+			if ( $trans ) {
+				return true;
+			} else {
+				return false;
+			}
+
+
 			return true;
 		}else {
 			return false;
@@ -97,11 +105,18 @@ class Action_productos extends CI_Model
 
 		if(!$entradas)
 		{
-			$erase = $this->db->delete('productos', array('id_productos' => $id_product));
 
+			$this->db->where('id_productos', $id_product);
+			$this->db->update('productos', array('activo' => 0));
+			$erase = $this->db->affected_rows();
 
 			if($erase) {
-				return true;
+				$trans = $this->repo_trans->addTrans( $id_product );
+				if ( $trans ) {
+					return true;
+				} else {
+					return false;
+				}
 			}
 		}
 
@@ -113,7 +128,7 @@ class Action_productos extends CI_Model
 		try
 		{
 			$sql = 'SELECT COUNT(P.id_productos) as "max"
-			FROM productos P
+			FROM productos P WHERE P.activo=1
 			';
 
 			$query = $this->db->query($sql);
@@ -137,7 +152,7 @@ class Action_productos extends CI_Model
 		{
 			$sql = "SELECT COUNT(P.id_productos) as max
 					FROM productos P
-					WHERE id_categorias = $id_category";
+					WHERE id_categorias = $id_category AND P.activo=1";
 
 			$query = $this->db->query($sql);
 			$rows = $query->row_array();

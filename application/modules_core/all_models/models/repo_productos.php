@@ -25,7 +25,7 @@ class Repo_productos extends CI_Model
 		$sql = "SELECT * FROM productos P
 				JOIN categorias C
 					ON P.id_categorias=C.id_categorias
-				WHERE C.activo=1 $filter $limit";
+				WHERE C.activo=1 AND P.activo=1 $filter $limit";
 		$query = $this->db->query($sql);
 		return $query->result_array();
 
