@@ -62,6 +62,13 @@ class Action_categorias extends CI_Model
 		$category['codigo_abrev'] = strtoupper($category['codigo_abrev']);
 		$insert_cat = $this->db->insert('categorias', $category);
 		if($insert_cat) {
+			$id_category 	= $this->db->insert_id();
+			$trans 			= $this->repo_trans->addTrans( $id_category );
+			if ( $trans ) {
+				return true;
+			} else {
+				return false;
+			}
 			return true;
 		}else {
 			return false;
@@ -72,15 +79,17 @@ class Action_categorias extends CI_Model
 	public function update($category)
 	{
 		$category['codigo_abrev'] = strtoupper($category['codigo_abrev']);
-
-
-
 		$this->db->where('id_categorias', $category['id_categorias']);
 		$this->db->update('categorias', $category);
 		$update = $this->db->affected_rows();
 
 		if($update == 1) {
-			return true;
+			$trans 			= $this->repo_trans->addTrans( $category['id_categorias'] );
+			if ( $trans ) {
+				return true;
+			} else {
+				return false;
+			}
 		}else {
 			return false;
 		}
@@ -88,14 +97,24 @@ class Action_categorias extends CI_Model
 
 	}
 
-	public function erase($id_category)
+	public function eraseCategory($id_category)
 	{
 		$products_with_category = $this->get_productos->getByCategory($id_category);
 
+
 		if(!$products_with_category)
 		{
-			$erase = $this->db->delete('categorias', array('id_categorias' => $id_category));
+			$this->db->where('id_categorias', $id_category);
+			$this->db->update('categorias', array('activo' => 0));
+			$erase = $this->db->affected_rows();
 			if($erase) {
+				$trans 			= $this->repo_trans->addTrans( $id_category );
+				if ( $trans ) {
+					return true;
+				} else {
+					return false;
+				}
+
 				return true;
 			}
 		}

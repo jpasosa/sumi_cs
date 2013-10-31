@@ -23,7 +23,9 @@ class All_models extends MY_Codeigniter
 		if ($this->input->post('id_categoria'))
 		{
 			$id_categoria = $this->input->post('id_categoria');
-			$del_category = $this->action_categorias->erase($id_categoria);
+
+			$del_category = $this->action_categorias->eraseCategory($id_categoria);
+
 			if($del_category) {
 				$message = 'Categoría eliminada correctamente.';
 				$this->session->set_flashdata('flash_notice', $message);

@@ -17,22 +17,37 @@ class Repo_trans extends CI_Model
         	$file_array 	= explode('/', $trace[1]['file']);
         	$file 		= end($file_array);
         	$function 	= $trace[1]['function'];
+       	$class 		= $trace[1]['class'];
 
-
-
-        	if ( $file == 'productos.php' && $function == 'insert' )
-        	{ // ALTA DE PRODUCTOS
+        	if ( $file == 'productos.php' && $function == 'insert' && $class == 'Action_productos')
+        	{ 	// ALTA DE PRODUCTOS
         		$insert_trans = $this->insertTrans( $id_tabla, 'insert.producto' );
         		$trans_ok = $insert_trans  ? true : false;
-        	} elseif ( $file == 'productos.php' && $function == 'update' )
-        	{ // EDICIÓN DE PRODUCTOS
+
+        	} elseif ( $file == 'productos.php' && $function == 'update' && $class == 'Action_productos')
+        	{ 	// EDICIÓN DE PRODUCTOS
         		$insert_trans 	= $this->insertTrans( $id_tabla, 'update.producto' );
         		$trans_ok 		= $insert_trans  ? true : false;
-        	} elseif ( $file == 'all_models.php' && $function == 'erase' )
-        	{ // BAJA DE PRODUCTOS
+
+        	} elseif ( $file == 'all_models.php' && $function == 'erase' && $class == 'Action_productos')
+        	{ 	// BAJA DE PRODUCTOS
         		$insert_trans 	= $this->insertTrans( $id_tabla, 'delete.producto' );
         		$trans_ok 		= $insert_trans  ? true : false;
 
+		} elseif ( $file == 'productos.php' && $function == 'insert' && $class == 'Action_categorias' )
+        	{ 	// ALTA DE CATEGORÍA
+      		$insert_trans 	= $this->insertTrans( $id_tabla, 'insert.categoria' );
+        		$trans_ok 		= $insert_trans  ? true : false;
+
+        	} elseif ( $file == 'productos.php' && $function == 'update' && $class == 'Action_categorias' )
+        	{ 	// EDICION DE CATEGORÍA
+      		$insert_trans 	= $this->insertTrans( $id_tabla, 'update.categoria' );
+        		$trans_ok 		= $insert_trans  ? true : false;
+
+        	} elseif ( $file == 'all_models.php' && $function == 'eraseCategory' && $class == 'Action_categorias' )
+        	{ 	// BAJA DE CATEGORÍA
+      		$insert_trans 	= $this->insertTrans( $id_tabla, 'delete.categoria' );
+        		$trans_ok 		= $insert_trans  ? true : false;
 
         	} else {
         		$trans_ok = false;
@@ -47,13 +62,22 @@ class Repo_trans extends CI_Model
 
 			$do_trans = false;
 			if ( $what_table == 'insert.producto' ) {
-				$id_trans_estado 	= 4;
+				$id_trans_estado 	= 4; // ALTA DE PRODUCTO
 				$do_trans 			= true;
 			} else if ( $what_table == 'update.producto' ) {
-				$id_trans_estado 	= 5;
+				$id_trans_estado 	= 5; // EDICIÓN DE PRODUCTO
 				$do_trans 			= true;
 			} else if ( $what_table == 'delete.producto' ) {
-				$id_trans_estado 	= 6;
+				$id_trans_estado 	= 6; // ELIMINACIÓN DE PRODUCTO
+				$do_trans 			= true;
+			} else if ( $what_table == 'insert.categoria' ) {
+				$id_trans_estado 	= 1; // ALTA DE CATEGORÍA
+				$do_trans 			= true;
+			} else if ( $what_table == 'update.categoria' ) {
+				$id_trans_estado 	= 2; // EDICIÓN DE CATEGORÍA
+				$do_trans 			= true;
+			} else if ( $what_table == 'delete.categoria' ) {
+				$id_trans_estado 	= 3; // ELIMINACIÓN DE CATEGORÍA
 				$do_trans 			= true;
 			}
 
