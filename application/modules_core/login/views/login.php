@@ -13,7 +13,7 @@
 		<input type="text" class="form-control" name="email" placeholder="Email" autofocus>
 		<input type="password" name="pass" class="form-control" placeholder="Clave">
 		<label class="checkbox">
-			<input type="checkbox" value="remember-me"> Olvidé mi contraseña
+			<!-- <input type="checkbox" value="remember-me"> Olvidé mi contraseña -->
 		</label>
 		<button class="btn btn-lg btn-primary btn-block" type="submit">INGRESAR</button>
 	</form>
