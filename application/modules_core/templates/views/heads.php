@@ -60,7 +60,7 @@
 
 	<script type="text/javascript">
 		// ahora se puede usar RUTA desde los .js, cambia si es LOCAL o DEMO
-		var RUTA = "<?php echo RUTA; ?>";
+		var RUTA = "<?php echo RAIZ; ?>";
 	</script>
 
 	<!-- JS DE LOS CONTROLADORES -->

@@ -1,6 +1,6 @@
 $("#btn-filter").live("click",function(){
 	var id_categoria = $("#filter :selected").val();
-	window.location = "http://sumi_cs/productos/listar/cat/"+id_categoria;
+	window.location = RUTA + "/productos/listar/cat/"+id_categoria;
 });
 // $("#btn-clean").live("click",function(){
 // 	$("#filter").val("");

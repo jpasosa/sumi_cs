@@ -6,7 +6,7 @@ $(document).ready(function() {
         if (confirm('Seguro de eliminarlo?')) {
                 jQuery.ajax({
                         type: "POST",
-                        url: RUTA + 'all_models/del_category/' + id_categoria,
+                        url: RUTA + '/all_models/del_category/' + id_categoria,
                         dataType: "text",
                         data: {
                             id_categoria: id_categoria

@@ -6,7 +6,7 @@ $(document).ready(function() {
         if (confirm('Seguro de eliminarlo?')) {
                 jQuery.ajax({
                         type: "POST",
-                        url: RUTA + 'all_models/del_tipo/' + id_tipodocumentos,
+                        url: RUTA + '/all_models/del_tipo/' + id_tipodocumentos,
                         dataType: "text",
                         data: {
                             id_tipodocumentos: id_tipodocumentos
