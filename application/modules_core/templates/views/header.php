@@ -23,7 +23,7 @@
                             <li> <a href="<?php echo site_url('stock_actual/listar');?>">Stock Actual </a></li>
                             <li> <a href="<?php echo site_url('entrada_stock/nueva_entrada');?>">Entrada de Stock </a></li>
                             <li> <a href="#">Salida de Stock </a></li>
-                            <li> <a href="#">Remitos </a></li>
+                            <li> <a href="<?php echo site_url('remitos/agregar');?>">Remitos </a></li>
                             <li> <a href="#">Consultas </a></li>
                         </ul>
                     </div>

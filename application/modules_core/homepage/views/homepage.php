@@ -22,10 +22,10 @@
 		</a>
 	</div>
 	<div class="box">
-		<a href="#">
+		<a href="<?php echo site_url('remitos/agregar');?>">
 			<img src="<?php echo ASSETS . 'frontend/images/salida_stock.png'; ?>" width="64" height="55" alt="egreso" />
-			<span class="h3">Salida de Stock</span>
-			<span class="p">Dar salida del stock, para un área determinada.</span>
+			<span class="h3">Remitos</span>
+			<span class="p">Realizar un Remito.</span>
 		</a>
 	</div>
 </div>
