@@ -8,6 +8,7 @@ system/*
 # CONFIGURACION DE BASE DE DATOS
 application/config/database.php
 
+
 # CACHE
 application/cache/*
 !application/cache/index.html
@@ -20,3 +21,7 @@ application/logs/*
 
 # ARCHIVOS SUBIDOS
 web/uploads/*
+
+# CONFIGURACION DE LA PAGINACION DE LOS PRODUCTOS
+application/config/pag_productos.php
+
