@@ -8,8 +8,8 @@
 		</a>
 	</div>
 	<div class="box">
-		<a href="<?php echo site_url('stock_actual/listar');?>">
-			<img src="#" width="64" height="64" alt="stock" />
+		<a href="#">
+			<img src="<?php echo ASSETS . 'frontend/images/stock_actual.png'; ?>" width="64" height="64" alt="stock" />
 			<span class="h3">Stock Actual</span>
 			<span class="p">Visualizar el stock actual.</span>
 		</a>
