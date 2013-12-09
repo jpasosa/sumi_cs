@@ -51,7 +51,7 @@ class Get_productos extends CI_Model
 	{
 		try {
 			$sql 		= "SELECT * FROM productos P
-							WHERE P.id_categorias = $id_category";
+							WHERE P.id_categorias = $id_category AND P.activo=1";
 			$query 		= $this->db->query($sql);
 			$products 	= $query->result_array();
 
