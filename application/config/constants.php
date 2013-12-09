@@ -40,14 +40,14 @@ define('FOPEN_READ_WRITE_CREATE_STRICT',		'x+b');
 if($_SERVER['REMOTE_ADDR'] == '127.0.0.1') { // LOCAL
 	$ruta = '/';
 }else { // DEMO
-	$ruta = '/senaf.com.ar/';
+	$ruta = '/';
 }
 define('RUTA', $ruta);
 
 if($_SERVER['REMOTE_ADDR'] == '127.0.0.1') { // LOCAL
 	define('RAIZ', 'http://sumi_cs');
 }else { // DEMO
-	define('RAIZ', 'http://senaf.com.ar/sumi_cs');
+	define('RAIZ', 'http://cstock.senaf.gob.ar');
 }
 
 

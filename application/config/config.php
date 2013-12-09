@@ -18,7 +18,7 @@ if($_SERVER['REMOTE_ADDR'] == '127.0.0.1')
 {
 	$config['base_url']	= 'http://sumi_cs';
 } else {
-	$config['base_url']	= 'http://senaf.com.ar/sumi_cs';
+	$config['base_url']	= 'http://cstock.senaf.gob.ar';
 }
 
 
