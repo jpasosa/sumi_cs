@@ -136,6 +136,22 @@ class Productos extends MY_Codeigniter {
 				$base 					= base_url('productos/listar/page');
 				// $base 					= 'http://sumi_cs/productos/listar/page';
 				$total_rows 			= $this->action_productos->countAll();
+
+
+				//
+				// Debagueo un objeto / arreglo / variable
+				//
+				echo ' <br/> <div style="font-weight: bold; color: green;"> $total_rows: </div> <pre>' ;
+				echo '<div style="color: #3741c6;">';
+				if(is_array($total_rows)) {
+				    print_r($total_rows);
+				}else {
+				var_dump($total_rows);
+				}
+				echo '</div>';
+				echo '</pre>';
+				die('--FIN--DEBUGEO----');
+
 				$uri_segment 			= 4;
 
 			}
